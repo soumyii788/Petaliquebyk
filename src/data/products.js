@@ -84,12 +84,12 @@ export const COLLECTION_CATEGORIES = [
 ];
 
 export const OCCASION_CARDS = [
-  { emoji: '🎂', label: 'Birthdays', color: 'bg-blush' },
-  { emoji: '💍', label: 'Anniversaries', color: 'bg-dusty/20' },
-  { emoji: '💝', label: "Valentine's Day", color: 'bg-blush' },
-  { emoji: '🤝', label: 'Friendship', color: 'bg-sage/30' },
-  { emoji: '🎓', label: 'Graduation', color: 'bg-blush' },
-  { emoji: '🌸', label: 'Just Because', color: 'bg-dusty/20' },
+  { id: 'birthdays', label: 'Birthdays', tagline: 'Celebrate their day', color: 'bg-blush' },
+  { id: 'anniversaries', label: 'Anniversaries', tagline: 'Forever & always', color: 'bg-dusty/20' },
+  { id: 'valentines', label: "Valentine's Day", tagline: 'From the heart', color: 'bg-blush' },
+  { id: 'friendship', label: 'Friendship', tagline: 'Unbreakable bond', color: 'bg-sage/30' },
+  { id: 'graduation', label: 'Graduation', tagline: 'Honor milestone', color: 'bg-blush' },
+  { id: 'just-because', label: 'Just Because', tagline: 'A gentle surprise', color: 'bg-dusty/20' },
 ];
 
 export const PRODUCTS = [

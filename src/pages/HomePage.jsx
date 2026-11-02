@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Instagram, Sparkles, Heart, Package, Star } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import {
+  BirthdayLogo,
+  AnniversaryLogo,
+  ValentineLogo,
+  FriendshipLogo,
+  GraduationLogo,
+  JustBecauseLogo,
+} from '../components/OccasionIcons';
+import {
   PRODUCTS,
   COLLECTION_CATEGORIES,
   OCCASION_CARDS,
@@ -229,6 +237,15 @@ function MadeWithLoveSection() {
 
 // ---------- Section: Perfect Gift ----------
 function PerfectGiftSection() {
+  const occasionLogos = {
+    birthdays: BirthdayLogo,
+    anniversaries: AnniversaryLogo,
+    valentines: ValentineLogo,
+    friendship: FriendshipLogo,
+    graduation: GraduationLogo,
+    'just-because': JustBecauseLogo,
+  };
+
   return (
     <section className="py-20 lg:py-28 bg-blush/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -240,16 +257,35 @@ function PerfectGiftSection() {
           </p>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {OCCASION_CARDS.map(({ emoji, label, color }) => (
-            <Link
-              key={label}
-              to="/shop"
-              className={`${color} rounded-2xl p-6 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300 group`}
-            >
-              <div className="text-4xl mb-3">{emoji}</div>
-              <p className="font-serif text-sm text-cocoa group-hover:text-dusty transition-colors">{label}</p>
-            </Link>
-          ))}
+          {OCCASION_CARDS.map(({ id, label, tagline }) => {
+            const LogoComponent = occasionLogos[id] || JustBecauseLogo;
+            return (
+              <Link
+                key={label}
+                to="/shop"
+                className="bg-white/80 hover:bg-white border border-blush/80 hover:border-dusty/60 rounded-2xl p-5 sm:p-6 text-center hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 group flex flex-col items-center justify-between min-h-[175px]"
+              >
+                <div className="w-13 h-13 rounded-full bg-cream border border-blush/80 flex items-center justify-center text-dusty group-hover:bg-dusty group-hover:text-cream group-hover:border-dusty group-hover:scale-105 transition-all duration-300 shadow-xs mb-3">
+                  <LogoComponent className="w-7 h-7" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-base text-cocoa group-hover:text-dusty transition-colors leading-snug">
+                    {label}
+                  </h3>
+                  {tagline && (
+                    <p className="font-sans text-[10px] tracking-wider text-cocoa/50 mt-1 uppercase">
+                      {tagline}
+                    </p>
+                  )}
+                </div>
+                <div className="mt-2 text-dusty opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="font-sans text-[10px] tracking-widest uppercase flex items-center gap-1 font-medium">
+                    Shop <ArrowRight size={10} />
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

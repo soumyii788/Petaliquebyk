@@ -13,8 +13,8 @@ const VALUES = [
 const JOURNEY = [
   { year: '2022', event: 'The first handmade tulip — made for a friend\'s birthday that changed everything.' },
   { year: '2023', event: 'Petalique by K is born. First 50 orders, all made from a tiny workspace in Jaipur.' },
-  { year: '2024', event: 'Custom bouquets become the heart of the brand. 300+ happy customers across India.' },
-  { year: '2025', event: 'New collections, a growing community and flowers shipped from Jaipur to every corner of India.' },
+  { year: '2024', event: 'Custom bouquets become the heart of the brand. 300+ happy customers.' },
+  { year: '2025', event: 'New collections, a growing community and beautiful handcrafted blooms from Jaipur.' },
 ];
 
 export default function AboutPage() {
@@ -72,7 +72,7 @@ export default function AboutPage() {
                   Petalique started as a birthday gift — a small handmade tulip I made for my best friend because I wanted to give her something she could keep forever. She cried. And I knew I was onto something.
                 </p>
                 <p>
-                  What started in my room with a few sheets of fabric and a lot of YouTube tutorials has grown into a small, passionate brand that ships handcrafted blooms across India.
+                  What started in my room with a few sheets of fabric and a lot of YouTube tutorials has grown into a small, passionate brand creating handcrafted blooms.
                 </p>
                 <p>
                   Every flower I make carries a little bit of intention. I think about who it's going to, what they mean to the person ordering and how I can make that feeling tangible in the petals.

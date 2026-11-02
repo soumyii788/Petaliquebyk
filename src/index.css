@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-sans text-cocoa antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-cocoa text-cream px-8 py-3 rounded-full font-sans font-medium text-sm tracking-widest uppercase transition-all duration-300 hover:bg-dusty hover:shadow-lg hover:scale-105 active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border border-cocoa text-cocoa px-8 py-3 rounded-full font-sans font-medium text-sm tracking-widest uppercase transition-all duration-300 hover:bg-cocoa hover:text-cream hover:shadow-lg hover:scale-105 active:scale-95;
+  }
+
+  .btn-dusty {
+    @apply bg-dusty text-white px-8 py-3 rounded-full font-sans font-medium text-sm tracking-widest uppercase transition-all duration-300 hover:bg-cocoa hover:shadow-lg hover:scale-105 active:scale-95;
+  }
+
+  .card-hover {
+    @apply transition-all duration-400 hover:-translate-y-2 hover:shadow-xl;
+  }
+
+  .section-heading {
+    @apply font-serif text-4xl md:text-5xl text-cocoa leading-tight;
+  }
+
+  .section-subheading {
+    @apply font-sans text-dusty text-sm tracking-widest uppercase;
+  }
+
+  .product-card {
+    @apply bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .transition-400 {
+    transition-duration: 400ms;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF8F1;
+}
+::-webkit-scrollbar-thumb {
+  background: #C78D9C;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #58443D;
+}
+
+/* Image loading */
+img {
+  transition: opacity 0.3s ease;
+}
+
+/* Selection color */
+::selection {
+  background: #F3DDE3;
+  color: #58443D;
+}

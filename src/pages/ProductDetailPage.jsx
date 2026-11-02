@@ -283,7 +283,7 @@ export default function ProductDetailPage() {
               </div>
               <div className="flex items-center gap-2 font-sans text-xs text-cocoa/70">
                 <Truck size={14} className="text-dusty" />
-                <span>Pan-India shipping available</span>
+                <span>Delivery details confirmed on WhatsApp</span>
               </div>
               <div className="flex items-center gap-2 font-sans text-xs text-cocoa/70">
                 <Sparkles size={14} className="text-dusty" />

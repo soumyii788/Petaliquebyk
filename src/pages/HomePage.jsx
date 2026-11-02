@@ -77,8 +77,8 @@ function HeroSection() {
             </div>
             <div className="w-px h-8 bg-blush" />
             <div className="text-center">
-              <div className="font-serif text-2xl text-cocoa">Pan-India</div>
-              <div className="font-sans text-[10px] tracking-wider uppercase text-dusty">Shipping</div>
+              <div className="font-serif text-2xl text-cocoa">Made to</div>
+              <div className="font-sans text-[10px] tracking-wider uppercase text-dusty">Order</div>
             </div>
           </div>
         </div>

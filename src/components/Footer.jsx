@@ -21,7 +21,7 @@ export default function Footer() {
               Flowers That Stay, Memories That Bloom.
             </p>
             <p className="font-sans text-xs text-cream/50 leading-relaxed">
-              Handcrafted floral gifts made with love in Jaipur, shipped across India.
+              Handcrafted floral gifts made with love in Jaipur.
             </p>
             <a
               href={INSTAGRAM_URL}
@@ -110,11 +110,9 @@ export default function Footer() {
               </li>
             </ul>
 
-            {/* Shipping note */}
+            {/* Order note */}
             <div className="mt-6 p-3 bg-white/5 rounded-lg border border-white/10">
               <p className="font-sans text-xs text-cream/60 leading-relaxed">
-                🚚 Pan-India Shipping Available
-                <br />
                 📦 Careful packaging for every order
                 <br />
                 ✋ Made to order — allow prep time

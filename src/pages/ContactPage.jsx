@@ -4,7 +4,7 @@ import { BUSINESS_EMAIL, BUSINESS_CITY, WHATSAPP_NUMBER, WHATSAPP_DISPLAY, INSTA
 
 const FAQ = [
   { q: 'How long does it take to prepare an order?', a: 'Most bouquets take 3–7 business days to handcraft. Custom orders may take slightly longer depending on complexity. We\'ll confirm your exact timeline on WhatsApp.' },
-  { q: 'Do you ship outside Jaipur?', a: 'Yes! We offer Pan-India shipping. Shipping charges and estimated delivery times vary by location and will be shared when you place your order.' },
+  { q: 'Do you ship outside Jaipur?', a: 'Please contact us on WhatsApp to discuss delivery options and timelines for your location.' },
   { q: 'Are the flowers really handmade?', a: 'Absolutely. Every single petal, stem and leaf is handcrafted by K using premium chenille-textured fabric materials. No mass production, ever.' },
   { q: 'Can I request a specific color or theme?', a: 'Of course! That\'s what our Custom Bouquet Builder is for. You can specify colors, themes, flower types, size and even upload a reference image.' },
   { q: 'Will my bouquet look exactly like the photograph?', a: 'Because everything is handmade, slight variations are natural and beautiful. We guarantee the same quality, style and love — but your bouquet is uniquely yours.' },
@@ -118,7 +118,7 @@ export default function ContactPage() {
             <div className="mt-8 p-5 bg-white rounded-xl border border-blush">
               <h3 className="font-serif text-lg text-cocoa mb-3">Shipping Information</h3>
               <ul className="space-y-2 font-sans text-xs text-cocoa/70">
-                <li>🚚 Pan-India shipping available</li>
+                <li>🚚 Delivery options discussed on WhatsApp</li>
                 <li>📦 All orders carefully packaged to protect handmade flowers</li>
                 <li>⏱ Preparation: 3–8 business days (varies by product)</li>
                 <li>📍 Based in Jaipur, Rajasthan</li>

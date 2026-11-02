@@ -173,7 +173,7 @@ export default function Navbar() {
                 <span>@petalique.by.k</span>
               </a>
               <p className="font-sans text-xs text-dusty/70 mt-3">
-                Jaipur, Rajasthan · Pan-India Shipping
+                Jaipur, Rajasthan
               </p>
             </div>
           </div>

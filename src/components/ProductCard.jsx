@@ -41,6 +41,11 @@ export default function ProductCard({ product }) {
         </div>
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">
+          {product.category === 'lilies' && (
+            <span className="bg-cocoa text-cream text-[9px] font-sans tracking-wider uppercase px-2.5 py-1 rounded-full shadow-xs">
+              +₹250 Lily Craft
+            </span>
+          )}
           {product.bestseller && (
             <span className="bg-dusty text-white text-[9px] font-sans tracking-wider uppercase px-2.5 py-1 rounded-full">
               Bestseller

@@ -33,6 +33,23 @@ export default function ProductDetailPage() {
     );
   }
 
+  const getStemMultiplier = (sizeName) => {
+    if (!sizeName) return 1;
+    if (sizeName.includes('10')) return 10;
+    if (sizeName.includes('5')) return 5;
+    if (sizeName.includes('3')) return 3;
+    return 1;
+  };
+
+  const multiplier = getStemMultiplier(selectedSize);
+  const currentUnitPrice = product.price * multiplier;
+  const currentOriginalPrice = product.originalPrice ? product.originalPrice * multiplier : null;
+  const currentTotal = currentUnitPrice * quantity;
+
+  const currentDiscount = currentOriginalPrice
+    ? Math.round(((currentOriginalPrice - currentUnitPrice) / currentOriginalPrice) * 100)
+    : null;
+
   const validate = () => {
     const e = {};
     if (!selectedColor) e.color = 'Please select a color';
@@ -44,7 +61,7 @@ export default function ProductDetailPage() {
     const e = validate();
     if (Object.keys(e).length) { setErrors(e); return; }
     setErrors({});
-    addItem(product, selectedColor, selectedSize, quantity);
+    addItem({ ...product, price: currentUnitPrice }, selectedColor, selectedSize, quantity);
     setAdded(true);
     setTimeout(() => setAdded(false), 2500);
   };
@@ -53,7 +70,7 @@ export default function ProductDetailPage() {
     const e = validate();
     if (Object.keys(e).length) { setErrors(e); return; }
     const msg = encodeURIComponent(
-      `Hi! I'd like to order:\n\n*${product.name}*\nColor: ${selectedColor}\nSize: ${selectedSize}\nQuantity: ${quantity}${personalization ? `\nPersonalization: ${personalization}` : ''}\n\nPrice: ₹${(product.price * quantity).toLocaleString('en-IN')}\n\nLooking forward to hearing from you!`
+      `Hi! I'd like to order:\n\n*${product.name}*\nColor: ${selectedColor}\nSize: ${selectedSize}\nQuantity: ${quantity}${personalization ? `\nPersonalization: ${personalization}` : ''}\n\nPrice: ₹${currentTotal.toLocaleString('en-IN')}\n\nLooking forward to hearing from you!`
     );
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
   };
@@ -142,17 +159,22 @@ export default function ProductDetailPage() {
             <h1 className="font-serif text-3xl md:text-4xl text-cocoa leading-tight mb-4">{product.name}</h1>
 
             {/* Price */}
-            <div className="flex items-center gap-3 mb-5">
-              <span className="font-serif text-3xl text-cocoa">₹{product.price.toLocaleString('en-IN')}</span>
-              {product.originalPrice && (
+            <div className="flex items-center gap-3 mb-2">
+              <span className="font-serif text-3xl text-cocoa">₹{currentUnitPrice.toLocaleString('en-IN')}</span>
+              {currentOriginalPrice && (
                 <span className="font-sans text-lg text-cocoa/40 line-through">
-                  ₹{product.originalPrice.toLocaleString('en-IN')}
+                  ₹{currentOriginalPrice.toLocaleString('en-IN')}
                 </span>
               )}
-              {discount && (
-                <span className="bg-blush text-dusty font-sans text-xs px-2 py-0.5 rounded">Save {discount}%</span>
+              {currentDiscount && (
+                <span className="bg-blush text-dusty font-sans text-xs px-2 py-0.5 rounded">Save {currentDiscount}%</span>
               )}
             </div>
+            {product.category === 'lilies' && (
+              <p className="font-sans text-xs text-dusty mb-4">
+                ✨ Includes +₹250 intricate handmade craft fee for lily petals & stamens
+              </p>
+            )}
 
             {/* Stars (placeholder) */}
             <div className="flex items-center gap-1.5 mb-5">
@@ -228,7 +250,7 @@ export default function ProductDetailPage() {
                   </button>
                 </div>
                 <span className="font-sans text-sm text-cocoa/60">
-                  Total: <span className="text-cocoa font-semibold">₹{(product.price * quantity).toLocaleString('en-IN')}</span>
+                  Total: <span className="text-cocoa font-semibold">₹{currentTotal.toLocaleString('en-IN')}</span>
                 </span>
               </div>
             </div>

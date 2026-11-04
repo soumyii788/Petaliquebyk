@@ -171,6 +171,13 @@ export default function CustomBouquetPage() {
                   Selected: {form.flowers.join(', ')}
                 </p>
               )}
+              <div className="mt-6 p-4 bg-blush/30 rounded-xl border border-blush/60">
+                <p className="font-sans text-xs text-cocoa/80 leading-relaxed">
+                  🌸 <strong>Pricing:</strong> ₹210 per flower (Actual value ₹599).
+                  <br />
+                  ✨ <strong>Lily:</strong> +₹250 extra per flower due to intricate petal craftsmanship.
+                </p>
+              </div>
             </div>
           )}
 
@@ -195,15 +202,22 @@ export default function CustomBouquetPage() {
               </div>
               <div>
                 <p className="font-sans text-sm font-medium text-cocoa mb-2">Number of Stems</p>
-                <input
-                  type="number"
-                  min="1"
-                  max="100"
-                  value={form.stemCount}
-                  onChange={(e) => set('stemCount', e.target.value)}
-                  placeholder="e.g. 12"
-                  className="w-36 px-4 py-2.5 border border-blush rounded-full font-sans text-sm text-cocoa focus:outline-none focus:border-dusty transition-colors"
-                />
+                <div className="flex items-center gap-3">
+                  <input
+                    type="number"
+                    min="1"
+                    max="100"
+                    value={form.stemCount}
+                    onChange={(e) => set('stemCount', e.target.value)}
+                    placeholder="e.g. 5"
+                    className="w-36 px-4 py-2.5 border border-blush rounded-full font-sans text-sm text-cocoa focus:outline-none focus:border-dusty transition-colors"
+                  />
+                  {form.stemCount && Number(form.stemCount) > 0 && (
+                    <span className="font-sans text-xs text-dusty">
+                      Est: ~₹{(Number(form.stemCount) * 210).toLocaleString('en-IN')}{form.flowers.includes('Lilies') ? ' (+₹250/lily)' : ''}
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           )}

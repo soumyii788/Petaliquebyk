@@ -6,10 +6,10 @@ import { PRODUCTS } from '../data/products';
 const CATEGORIES = ['All', 'tulips', 'sunflowers', 'roses', 'lilies', 'mixed'];
 const PRICE_RANGES = [
   { label: 'All Prices', min: 0, max: Infinity },
-  { label: 'Under ₹500', min: 0, max: 500 },
+  { label: 'Under ₹250', min: 0, max: 250 },
+  { label: '₹250 – ₹500', min: 250, max: 500 },
   { label: '₹500 – ₹1000', min: 500, max: 1000 },
-  { label: '₹1000 – ₹2000', min: 1000, max: 2000 },
-  { label: '₹2000+', min: 2000, max: Infinity },
+  { label: '₹1000+', min: 1000, max: Infinity },
 ];
 const SORT_OPTIONS = [
   { label: 'Featured', value: 'featured' },

@@ -8,6 +8,7 @@ export const WHATSAPP_DISPLAY = '+91 92573 46967';
 export const INSTAGRAM_URL = 'https://www.instagram.com/petalique.by.k';
 export const BUSINESS_EMAIL = 'petalique.byk@gmail.com';
 export const BUSINESS_CITY = 'Jaipur, Rajasthan';
+export const RAZORPAY_KEY_ID = 'rzp_test_placeholder'; // Replace with your Razorpay Key ID (rzp_test_... or rzp_live_...)
 
 // ── Real Petalique Product Photographs ───────────────────────
 export const HERO_IMAGE = '/photos/sunflower-lily-bouquet.png';

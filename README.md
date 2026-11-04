@@ -85,56 +85,33 @@ export const WHATSAPP_DISPLAY = '+91 92573 46967';
 export const INSTAGRAM_URL = 'https://www.instagram.com/petalique.by.k'; // ← Verify URL
 export const BUSINESS_EMAIL = 'petalique.byk@gmail.com'; // ← Update if different
 export const BUSINESS_CITY = 'Jaipur, Rajasthan';
+export const RAZORPAY_KEY_ID = 'rzp_test_placeholder'; // ← Or set VITE_RAZORPAY_KEY_ID in .env
 ```
 
-### Adding Real Product Photos
-Replace the `Unsplash` image URLs in `products.js` with your actual product photo URLs (or local paths in `/public`):
-
-```js
-// In PRODUCTS array, replace images array:
-images: ['/photos/tulip-bouquet-1.jpg', '/photos/tulip-bouquet-2.jpg'],
-```
-
-### Adding / Editing Products
-Each product in the `PRODUCTS` array has:
-- `price` — in INR (₹)
-- `originalPrice` — optional, shows a strikethrough + discount badge
-- `available` — set `false` to show "Sold Out"
-- `bestseller` — set `true` to show the bestseller badge
-- `preparationDays` — displayed on product page
+### Setting Up Razorpay Online Payments
+1. Sign up / log in to [Razorpay Dashboard](https://dashboard.razorpay.com).
+2. Go to **Settings > API Keys** and generate a Key ID (`rzp_test_...` or `rzp_live_...`).
+3. Create a `.env` file from `.env.example` in the project root:
+   ```env
+   VITE_RAZORPAY_KEY_ID=rzp_test_your_key_here
+   ```
+   Or edit `RAZORPAY_KEY_ID` in `src/data/products.js`.
+4. Customers can now pay via UPI (GPay, PhonePe, Paytm), Debit/Credit Cards, and Netbanking. On successful payment, an official Order Confirmation Receipt is generated with the payment reference, and can be sent to WhatsApp with 1 click.
 
 ---
 
-## 📱 Pages & Features
+## 🛒 Order & Checkout Flow
 
-| Page | Route | Description |
-|------|-------|-------------|
-| Home | `/` | Hero, bestsellers, collections, process, occasions, custom CTA, testimonials, Instagram gallery |
-| Shop | `/shop` | Full product grid with category, price, sort & availability filters |
-| Product | `/product/:slug` | Gallery, color/size selection, quantity, personalization, WhatsApp order |
-| Collections | `/collections` | All collection overview |
-| Collection Detail | `/collections/:slug` | Products filtered by collection |
-| Custom Bouquet | `/custom-bouquet` | 5-step interactive builder → WhatsApp |
-| Our Story | `/our-story` | Founder story (Khushi Joshi), brand values, journey timeline |
-| Contact | `/contact` | Contact form → WhatsApp, FAQ |
-| Cart | `/cart` | Cart management + delivery form → WhatsApp order confirmation |
+Petalique supports two flexible checkout methods:
 
----
+1. **Online Payment (Razorpay)**:
+   - Validates delivery address, name, phone, and PIN code
+   - Opens Razorpay modal supporting UPI, Cards, Netbanking
+   - On payment completion, displays the verified Order Receipt Modal with Payment ID
+   - 1-click button to share verified receipt on WhatsApp
 
-## 🛒 Order Flow
-
-All orders are confirmed via **WhatsApp** (no online payment processed):
-
-1. Customer adds items / builds custom bouquet
-2. Fills delivery details in cart checkout
-3. Clicks **"Confirm Order on WhatsApp"**
-4. Pre-filled WhatsApp message opens with full order details
-5. Khushi confirms via WhatsApp and shares payment details
-
-### Future: Razorpay Integration
-The cart is structured for easy payment gateway addition:
-- Replace the WhatsApp CTA in `CartPage.jsx` with a Razorpay checkout call
-- Add an order confirmation page at `/order-confirmed`
+2. **Direct WhatsApp Order**:
+   - Customers can also choose "Order & Pay via WhatsApp" to coordinate directly with Khushi.
 
 ---
 

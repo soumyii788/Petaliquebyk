@@ -399,25 +399,46 @@ export default function CartPage() {
                 </div>
               </div>
 
-              {/* Checkout toggle button */}
+              {/* Primary action */}
+              <button
+                onClick={() => {
+                  if (!showCheckout) {
+                    setShowCheckout(true);
+                  } else {
+                    handleWhatsAppOrder();
+                  }
+                }}
+                className="w-full flex items-center justify-center gap-2.5 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white rounded-full font-sans text-xs tracking-widest uppercase font-semibold shadow-md hover:shadow-lg transition-all mt-5"
+              >
+                <MessageCircle size={18} />
+                <span>Confirm Order on WhatsApp</span>
+              </button>
+
               <button
                 onClick={() => setShowCheckout(!showCheckout)}
-                className="w-full btn-primary mt-5 text-center flex items-center justify-center gap-2"
+                className="w-full flex items-center justify-center gap-2 py-2.5 mt-2 border border-blush text-cocoa/70 hover:text-cocoa hover:bg-cream rounded-full font-sans text-xs tracking-wider uppercase transition-colors"
               >
-                <CreditCard size={15} />
-                {showCheckout ? 'Hide Checkout Form' : 'Proceed to Checkout'}
+                <CreditCard size={14} />
+                <span>{showCheckout ? 'Hide Checkout Details' : 'Or Pay Online via Razorpay'}</span>
               </button>
 
               <div className="flex items-center justify-center gap-1.5 mt-4 text-[10px] text-cocoa/50 font-sans">
                 <ShieldCheck size={13} className="text-emerald-600" />
-                <span>100% Secure Checkout powered by Razorpay</span>
+                <span>Handmade in Jaipur · Direct WhatsApp confirmation with Khushi</span>
               </div>
             </div>
 
             {/* Delivery Details & Payment Form */}
             {showCheckout && (
               <div className="bg-white rounded-2xl border border-blush p-6 shadow-sm animate-slide-up">
-                <h3 className="font-serif text-lg text-cocoa mb-4">Delivery & Contact Information</h3>
+                <h3 className="font-serif text-lg text-cocoa mb-3">Delivery & Order Confirmation</h3>
+
+                <div className="mb-5 p-3.5 bg-emerald-50/70 border border-emerald-200/60 rounded-xl flex items-start gap-2.5 text-emerald-900">
+                  <Sparkles size={16} className="text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <p className="font-sans text-xs leading-relaxed">
+                    Fill in your delivery address below. Clicking <strong className="font-semibold text-emerald-800">Confirm Order on WhatsApp</strong> sends your structured order details directly to Khushi to confirm color customization, gift wrap, and delivery schedule.
+                  </p>
+                </div>
 
                 {paymentError && (
                   <div className="mb-4 p-3.5 bg-red-50 border border-red-200 rounded-xl flex items-start gap-2.5 text-red-700">
@@ -454,38 +475,41 @@ export default function CartPage() {
                 </div>
 
                 <div className="border-t border-blush mt-6 pt-5 space-y-3">
-                  <p className="font-sans text-xs tracking-wider uppercase text-cocoa/70 font-semibold mb-2">
-                    Choose Payment Option:
+                  <p className="font-sans text-xs tracking-wider uppercase text-cocoa/70 font-semibold mb-1">
+                    Confirm Your Order:
                   </p>
 
-                  {/* Primary Option: Razorpay Payment Gateway */}
+                  {/* Primary Option: WhatsApp Confirmation */}
+                  <button
+                    onClick={handleWhatsAppOrder}
+                    className="w-full flex items-center justify-center gap-2.5 py-4 bg-[#25D366] hover:bg-[#1ebe5a] text-white rounded-full font-sans text-xs tracking-widest uppercase font-semibold shadow-md hover:shadow-lg transition-all"
+                  >
+                    <MessageCircle size={18} />
+                    <span>Confirm Order on WhatsApp</span>
+                  </button>
+                  <p className="font-sans text-[11px] text-center text-cocoa/60">
+                    Direct confirmation with founder Khushi Joshi · Payment & customization finalized on WhatsApp
+                  </p>
+
+                  <div className="relative flex py-2 items-center">
+                    <div className="flex-grow border-t border-blush/80"></div>
+                    <span className="flex-shrink mx-3 text-[10px] font-sans text-cocoa/40 uppercase tracking-widest">or pay online</span>
+                    <div className="flex-grow border-t border-blush/80"></div>
+                  </div>
+
+                  {/* Secondary Option: Razorpay Payment Gateway */}
                   <button
                     onClick={handleRazorpayPayment}
                     disabled={isProcessingRazorpay}
-                    className="w-full flex items-center justify-center gap-2.5 py-3.5 bg-cocoa text-cream rounded-full font-sans text-xs tracking-widest uppercase hover:bg-dusty transition-all shadow-md group disabled:opacity-50"
+                    className="w-full flex items-center justify-center gap-2.5 py-3 border border-cocoa/30 text-cocoa rounded-full font-sans text-xs tracking-widest uppercase hover:bg-cream hover:border-cocoa transition-all disabled:opacity-50 font-medium"
                   >
-                    <CreditCard size={16} className="text-blush group-hover:scale-110 transition-transform" />
+                    <CreditCard size={15} />
                     <span>{isProcessingRazorpay ? 'Opening Gateway...' : `Pay ₹${grandTotal.toLocaleString('en-IN')} via Razorpay`}</span>
                   </button>
 
                   <p className="font-sans text-[10px] text-center text-cocoa/50">
                     Supports UPI (Google Pay, PhonePe, Paytm), Debit/Credit Cards & Netbanking
                   </p>
-
-                  <div className="relative flex py-2 items-center">
-                    <div className="flex-grow border-t border-blush/80"></div>
-                    <span className="flex-shrink mx-3 text-[10px] font-sans text-cocoa/40 uppercase tracking-widest">or</span>
-                    <div className="flex-grow border-t border-blush/80"></div>
-                  </div>
-
-                  {/* Secondary Option: WhatsApp Direct Order */}
-                  <button
-                    onClick={handleWhatsAppOrder}
-                    className="w-full flex items-center justify-center gap-2 py-3 border border-emerald-600/40 text-emerald-800 rounded-full font-sans text-xs tracking-widest uppercase hover:bg-emerald-50 transition-colors"
-                  >
-                    <MessageCircle size={15} className="text-emerald-600" />
-                    <span>Order & Pay via WhatsApp</span>
-                  </button>
                 </div>
               </div>
             )}

@@ -240,8 +240,8 @@ export const PRODUCTS = [
     name: 'Cherry Red Lilies & Tulips Bouquet',
     slug: 'grand-celebration-bouquet',
     category: 'mixed',
-    price: 850,
-    originalPrice: 2995,
+    price: 750,
+    originalPrice: 1050,
     images: [
       '/photos/red-lily-white-tulips-maroon-wrap.jpg',
       '/photos/cherry-red-lilies-bouquet-night.jpg',

@@ -81,11 +81,11 @@ export const OCCASION_CARDS = [
   { id: 'just-because', label: 'Just Because', tagline: 'A gentle surprise', color: 'bg-dusty/20' },
 ];
 
-export const BASE_FLOWER_SP = 210;
-export const BASE_FLOWER_CP = 599;
+export const BASE_FLOWER_SP = 150;
+export const BASE_FLOWER_CP = 165;
 export const LILY_EXTRA_COST = 250;
-export const LILY_SP = 460;
-export const LILY_CP = 849;
+export const LILY_SP = 400;
+export const LILY_CP = 415;
 
 export const PRODUCTS = [
   {
@@ -93,8 +93,8 @@ export const PRODUCTS = [
     name: 'Blush Tulip Bloom',
     slug: 'blush-tulip-bouquet',
     category: 'tulips',
-    price: 210,
-    originalPrice: 599,
+    price: 150,
+    originalPrice: 165,
     images: [
       '/photos/dusky-pink-tulips-pair.jpg',
       '/photos/pink-lily-tulips-outdoor-kraft.jpg',
@@ -114,8 +114,8 @@ export const PRODUCTS = [
     name: 'Sunshine Sunflower Bloom',
     slug: 'sunshine-sunflower-bunch',
     category: 'sunflowers',
-    price: 210,
-    originalPrice: 599,
+    price: 150,
+    originalPrice: 165,
     images: [
       '/photos/sunflower-daisy-kraft-handheld.jpg',
       '/photos/sunflower-daisy-kraft-table.jpg',
@@ -136,8 +136,8 @@ export const PRODUCTS = [
     name: 'Eternal Velvet Rose Bloom',
     slug: 'eternal-rose-collection',
     category: 'roses',
-    price: 210,
-    originalPrice: 599,
+    price: 150,
+    originalPrice: 165,
     images: [
       '/photos/single-velvet-rose-sunlight.jpg',
       '/photos/single-velvet-rose.png',
@@ -156,8 +156,8 @@ export const PRODUCTS = [
     name: 'Graceful Lily Bloom',
     slug: 'lily-dreams-arrangement',
     category: 'lilies',
-    price: 460,
-    originalPrice: 849,
+    price: 400,
+    originalPrice: 415,
     images: [
       '/photos/pink-white-gradient-lilies-stem.jpg',
       '/photos/red-lily-white-tulips-maroon-wrap.jpg',
@@ -178,14 +178,14 @@ export const PRODUCTS = [
     name: 'Rainbow Meadow Mixed Bouquet',
     slug: 'rainbow-meadow-bouquet',
     category: 'mixed',
-    price: 630,
-    originalPrice: 1797,
+    price: 450,
+    originalPrice: 495,
     images: [
       '/photos/sunflower-tiger-lily-window.jpg',
       '/photos/pink-lily-tulips-outdoor-kraft.jpg',
       '/photos/sunflower-pink-lily-duo.jpg',
     ],
-    shortDescription: 'A vibrant mixed bouquet of sunflowers, lilies and tulips (@ ₹210/bloom).',
+    shortDescription: 'A vibrant mixed bouquet of sunflowers, lilies and tulips (@ ₹150/bloom).',
     description: `The Rainbow Meadow Mixed Bouquet is our most colourful creation — a curated mix of handcrafted sunflowers, lilies and tulips in a cheerful, vibrant arrangement.\n\nA celebration in a bouquet, perfect for birthdays, farewells and happy occasions.`,
     colors: ['Multicolor Bright', 'Pastel Mix', 'Warm Tones'],
     sizes: ['3 Flowers (Trio)', '5 Flowers (Mini Bouquet)', '10 Flowers (Grand Bouquet)'],
@@ -199,8 +199,8 @@ export const PRODUCTS = [
     name: 'Pastel Charm Tulip',
     slug: 'pastel-charm-tulip-set',
     category: 'tulips',
-    price: 210,
-    originalPrice: 599,
+    price: 150,
+    originalPrice: 165,
     images: [
       '/photos/dusky-pink-tulips-pair.jpg',
       '/photos/pastel-lilies-tulips.png',
@@ -220,8 +220,8 @@ export const PRODUCTS = [
     name: 'Velvet Rose Single Stem',
     slug: 'velvet-rose-single-stem',
     category: 'roses',
-    price: 210,
-    originalPrice: 599,
+    price: 199,
+    originalPrice: 350,
     images: [
       '/photos/single-velvet-rose-sunlight.jpg',
       '/photos/single-velvet-rose.png',

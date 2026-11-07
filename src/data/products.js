@@ -81,11 +81,15 @@ export const OCCASION_CARDS = [
   { id: 'just-because', label: 'Just Because', tagline: 'A gentle surprise', color: 'bg-dusty/20' },
 ];
 
+export const SINGLE_BLOOM_SP = 199;
+export const SINGLE_BLOOM_CP = 250;
 export const BASE_FLOWER_SP = 150;
 export const BASE_FLOWER_CP = 165;
 export const LILY_EXTRA_COST = 250;
 export const LILY_SP = 400;
 export const LILY_CP = 415;
+export const LILY_SINGLE_SP = 449;
+export const LILY_SINGLE_CP = 500;
 
 export const PRODUCTS = [
   {
@@ -93,8 +97,8 @@ export const PRODUCTS = [
     name: 'Blush Tulip Bloom',
     slug: 'blush-tulip-bouquet',
     category: 'tulips',
-    price: 150,
-    originalPrice: 165,
+    price: 199,
+    originalPrice: 250,
     images: [
       '/photos/dusky-pink-tulips-pair.jpg',
       '/photos/pink-lily-tulips-outdoor-kraft.jpg',
@@ -114,8 +118,8 @@ export const PRODUCTS = [
     name: 'Sunshine Sunflower Bloom',
     slug: 'sunshine-sunflower-bunch',
     category: 'sunflowers',
-    price: 150,
-    originalPrice: 165,
+    price: 199,
+    originalPrice: 250,
     images: [
       '/photos/sunflower-daisy-kraft-handheld.jpg',
       '/photos/sunflower-daisy-kraft-table.jpg',
@@ -136,8 +140,8 @@ export const PRODUCTS = [
     name: 'Eternal Velvet Rose Bloom',
     slug: 'eternal-rose-collection',
     category: 'roses',
-    price: 150,
-    originalPrice: 165,
+    price: 199,
+    originalPrice: 250,
     images: [
       '/photos/single-velvet-rose-sunlight.jpg',
       '/photos/single-velvet-rose.png',
@@ -156,8 +160,8 @@ export const PRODUCTS = [
     name: 'Graceful Lily Bloom',
     slug: 'lily-dreams-arrangement',
     category: 'lilies',
-    price: 400,
-    originalPrice: 415,
+    price: 449,
+    originalPrice: 500,
     images: [
       '/photos/pink-white-gradient-lilies-stem.jpg',
       '/photos/red-lily-white-tulips-maroon-wrap.jpg',
@@ -199,8 +203,8 @@ export const PRODUCTS = [
     name: 'Pastel Charm Tulip',
     slug: 'pastel-charm-tulip-set',
     category: 'tulips',
-    price: 150,
-    originalPrice: 165,
+    price: 199,
+    originalPrice: 250,
     images: [
       '/photos/dusky-pink-tulips-pair.jpg',
       '/photos/pastel-lilies-tulips.png',

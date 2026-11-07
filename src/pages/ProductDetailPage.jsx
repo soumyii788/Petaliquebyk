@@ -33,17 +33,83 @@ export default function ProductDetailPage() {
     );
   }
 
-  const getStemMultiplier = (sizeName) => {
-    if (!sizeName) return 1;
-    if (sizeName.includes('10')) return 10;
-    if (sizeName.includes('5')) return 5;
-    if (sizeName.includes('3')) return 3;
-    return 1;
+  const calculatePricing = (p, sizeName) => {
+    // Fixed / curated bouquets
+    if (p.id === 8) {
+      if (sizeName && sizeName.includes('10')) {
+        return {
+          unitPrice: p.price * 2,
+          originalPrice: p.originalPrice ? p.originalPrice * 2 : null,
+        };
+      }
+      return {
+        unitPrice: p.price,
+        originalPrice: p.originalPrice,
+      };
+    }
+    if (p.id === 9 || p.id === 10) {
+      if (sizeName && sizeName.includes('12')) {
+        return {
+          unitPrice: Math.round(p.price * 1.7),
+          originalPrice: p.originalPrice ? Math.round(p.originalPrice * 1.7) : null,
+        };
+      }
+      return {
+        unitPrice: p.price,
+        originalPrice: p.originalPrice,
+      };
+    }
+
+    // Single stem rose
+    if (p.id === 7) {
+      return {
+        unitPrice: 199,
+        originalPrice: 250,
+      };
+    }
+
+    // Rainbow Meadow Mixed Bouquet (sizes 3, 5, 10 blooms @ 150 SP, 165 CP per bloom)
+    if (p.id === 5) {
+      const stems = sizeName?.includes('10') ? 10 : sizeName?.includes('5') ? 5 : 3;
+      return {
+        unitPrice: stems * 150,
+        originalPrice: stems * 165,
+      };
+    }
+
+    // Graceful Lily Bloom (+₹250 craft fee: single bloom 449/500, bouquet 400/415 per bloom)
+    if (p.category === 'lilies') {
+      if (!sizeName || sizeName.includes('1 ') || sizeName.includes('Single')) {
+        return {
+          unitPrice: 449,
+          originalPrice: 500,
+        };
+      }
+      const stems = sizeName.includes('10') ? 10 : sizeName.includes('5') ? 5 : sizeName.includes('3') ? 3 : 1;
+      return {
+        unitPrice: stems * 400,
+        originalPrice: stems * 415,
+      };
+    }
+
+    // Standard bloom products (Tulips, Sunflowers, Roses):
+    // Single bloom: SP 199, CP 250
+    // Bouquet (3, 5, 10 blooms): SP 150/bloom, CP 165/bloom
+    if (!sizeName || sizeName.includes('1 ') || sizeName.includes('Single')) {
+      return {
+        unitPrice: 199,
+        originalPrice: 250,
+      };
+    }
+
+    const stems = sizeName.includes('10') ? 10 : sizeName.includes('5') ? 5 : sizeName.includes('3') ? 3 : 1;
+    return {
+      unitPrice: stems * 150,
+      originalPrice: stems * 165,
+    };
   };
 
-  const multiplier = getStemMultiplier(selectedSize);
-  const currentUnitPrice = product.price * multiplier;
-  const currentOriginalPrice = product.originalPrice ? product.originalPrice * multiplier : null;
+  const { unitPrice: currentUnitPrice, originalPrice: currentOriginalPrice } = calculatePricing(product, selectedSize);
   const currentTotal = currentUnitPrice * quantity;
 
   const currentDiscount = currentOriginalPrice
@@ -111,9 +177,9 @@ export default function ProductDetailPage() {
                   Bestseller
                 </div>
               )}
-              {discount && (
+              {currentDiscount && (
                 <div className="absolute top-4 right-4 bg-cocoa text-cream text-xs font-sans px-3 py-1 rounded-full">
-                  {discount}% off
+                  {currentDiscount}% off
                 </div>
               )}
               {/* Nav arrows */}

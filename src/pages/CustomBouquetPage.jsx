@@ -173,7 +173,7 @@ export default function CustomBouquetPage() {
               )}
               <div className="mt-6 p-4 bg-blush/30 rounded-xl border border-blush/60">
                 <p className="font-sans text-xs text-cocoa/80 leading-relaxed">
-                  🌸 <strong>Pricing:</strong> ₹210 per flower (Actual value ₹599).
+                  🌸 <strong>Pricing:</strong> ₹150 per flower in bouquet (Value ₹165) · Single bloom ₹199 (Value ₹250).
                   <br />
                   ✨ <strong>Lily:</strong> +₹250 extra per flower due to intricate petal craftsmanship.
                 </p>
@@ -214,7 +214,7 @@ export default function CustomBouquetPage() {
                   />
                   {form.stemCount && Number(form.stemCount) > 0 && (
                     <span className="font-sans text-xs text-dusty">
-                      Est: ~₹{(Number(form.stemCount) * 210).toLocaleString('en-IN')}{form.flowers.includes('Lilies') ? ' (+₹250/lily)' : ''}
+                      Est: ~₹{(Number(form.stemCount) === 1 ? 199 : Number(form.stemCount) * 150 + (form.flowers.includes('Lilies') ? Number(form.stemCount) * 250 : 0)).toLocaleString('en-IN')}{form.flowers.includes('Lilies') ? ' (incl. lily craft)' : ''}
                     </span>
                   )}
                 </div>

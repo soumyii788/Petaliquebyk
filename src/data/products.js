@@ -221,7 +221,7 @@ export const PRODUCTS = [
     slug: 'velvet-rose-single-stem',
     category: 'roses',
     price: 199,
-    originalPrice: 350,
+    originalPrice: 250,
     images: [
       '/photos/single-velvet-rose-sunlight.jpg',
       '/photos/single-velvet-rose.png',

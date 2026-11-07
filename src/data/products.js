@@ -15,7 +15,7 @@ export const HERO_IMAGE = '/photos/pink-lily-tulips-outdoor-kraft.jpg';
 export const FOUNDER_IMAGE = '/photos/founder-khushi.png';
 
 export const PROCESS_IMAGES = [
-  { src: '/photos/craft-tools-process.png', caption: 'Carefully selecting wire and soft velvet materials' },
+  { src: '/photos/sunflower-tiger-lily-window.jpg', caption: 'Intricately handcrafted chenille petals and wired stems' },
   { src: '/photos/pink-white-gradient-lilies-stem.jpg', caption: 'Handcrafting delicate multi-petal lilies with stamen wire' },
   { src: '/photos/dusky-pink-tulips-pair.jpg', caption: 'Shaping velvet petals and winding spiral stems' },
   { src: '/photos/custom-monogram-initial-bouquet-full.jpg', caption: 'Wrapped in signature papers, ready to bloom forever' },

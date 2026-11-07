@@ -215,7 +215,7 @@ function MadeWithLoveSection() {
 
           {/* Right: Image grid */}
           <div className="grid grid-cols-2 gap-4">
-            {PROCESS_IMAGES.map((img, i) => (
+            {PROCESS_IMAGES.slice(0, 3).map((img, i) => (
               <div
                 key={i}
                 className={`overflow-hidden rounded-2xl ${i === 0 ? 'row-span-2' : ''}`}
@@ -223,7 +223,7 @@ function MadeWithLoveSection() {
                 <img
                   src={img.src}
                   alt={img.caption}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
                   style={{ minHeight: i === 0 ? '320px' : '150px' }}
                 />
               </div>

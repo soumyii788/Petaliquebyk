@@ -100,6 +100,8 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <BloomDivider variant="flourish" className="bg-cream" />
+
       {/* Values */}
       <section className="py-20 bg-blush/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -118,6 +120,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <BloomDivider variant="bloom" className="bg-cream" />
 
       {/* Journey timeline */}
       <section className="py-20 lg:py-28">
@@ -147,6 +151,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
+      <PetalWaveTransition fill="fill-cocoa" bg="bg-cream" />
       <section className="py-16 bg-cocoa text-center">
         <div className="max-w-xl mx-auto px-4">
           <Sparkles size={28} className="text-dusty mx-auto mb-4" />

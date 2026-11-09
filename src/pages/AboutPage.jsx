@@ -13,7 +13,7 @@ const VALUES = [
 const JOURNEY = [
   { year: '2022', event: 'The first handmade tulip — made for a friend\'s birthday that changed everything.' },
   { year: '2023', event: 'Petalique by K is born. First 50 orders, all made from a tiny workspace in Jaipur.' },
-  { year: '2024', event: 'Custom bouquets become the heart of the brand. 300+ happy customers.' },
+  { year: '2024', event: 'Custom bouquets become the heart of the brand, crafting bespoke floral stories.' },
   { year: '2025', event: 'New collections, a growing community and beautiful handcrafted blooms from Jaipur.' },
 ];
 

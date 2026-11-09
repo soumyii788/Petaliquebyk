@@ -75,8 +75,8 @@ function HeroSection() {
           {/* Trust signals */}
           <div className="flex items-center gap-6 mt-10">
             <div className="text-center">
-              <div className="font-serif text-2xl text-cocoa">500+</div>
-              <div className="font-sans text-[10px] tracking-wider uppercase text-dusty">Happy Customers</div>
+              <div className="font-serif text-2xl text-cocoa">Forever</div>
+              <div className="font-sans text-[10px] tracking-wider uppercase text-dusty">Blooms</div>
             </div>
             <div className="w-px h-8 bg-blush" />
             <div className="text-center">

@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ShoppingBag, Heart, ChevronLeft, ChevronRight, Truck, Clock, Sparkles, MessageCircle, Star } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { PRODUCTS, WHATSAPP_NUMBER } from '../data/products';
+import BloomDivider from '../components/BloomDivider';
 
 export default function ProductDetailPage() {
   const { slug } = useParams();
@@ -389,7 +390,8 @@ export default function ProductDetailPage() {
         </div>
 
         {/* Full Description */}
-        <div className="mt-16 max-w-2xl">
+        <BloomDivider variant="flourish" spacing="my-14" />
+        <div className="max-w-2xl">
           <h2 className="font-serif text-2xl text-cocoa mb-4">About This Bouquet</h2>
           <div className="font-sans text-sm text-cocoa/70 leading-relaxed whitespace-pre-line">
             {product.description}
@@ -398,14 +400,17 @@ export default function ProductDetailPage() {
 
         {/* Related products */}
         {related.length > 0 && (
-          <div className="mt-20">
-            <h2 className="font-serif text-3xl text-cocoa mb-8">You May Also Love</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {related.map((p) => (
-                <ProductCard key={p.id} product={p} />
-              ))}
+          <>
+            <BloomDivider variant="bloom" spacing="my-16" />
+            <div>
+              <h2 className="font-serif text-3xl text-cocoa mb-8">You May Also Love</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                {related.map((p) => (
+                  <ProductCard key={p.id} product={p} />
+                ))}
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </main>

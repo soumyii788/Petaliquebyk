@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Sparkles, Star } from 'lucide-react';
 import { FOUNDER_IMAGE, INSTAGRAM_URL } from '../data/products';
+import BloomDivider, { PetalWaveTransition } from '../components/BloomDivider';
 
 const VALUES = [
   { emoji: '✋', title: 'Handmade Always', desc: 'Every single petal shaped by hand. No shortcuts, no machines.' },

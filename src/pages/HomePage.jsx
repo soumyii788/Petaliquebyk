@@ -21,6 +21,7 @@ import {
   INSTAGRAM_URL,
   WHATSAPP_NUMBER,
 } from '../data/products';
+import BloomDivider, { PetalWaveTransition } from '../components/BloomDivider';
 
 // ---------- Section: Hero ----------
 function HeroSection() {
@@ -454,13 +455,21 @@ export default function HomePage() {
   return (
     <main>
       <HeroSection />
+      <BloomDivider variant="flourish" className="bg-cream" />
       <BestsellersSection />
+      <BloomDivider variant="bloom" className="bg-cream" />
       <CollectionsSection />
+      <BloomDivider variant="flourish" className="bg-blush/30" />
       <MadeWithLoveSection />
+      <BloomDivider variant="petals" className="bg-cream" />
       <PerfectGiftSection />
+      <PetalWaveTransition fill="fill-cocoa" bg="bg-blush/20" />
       <CustomCTASection />
+      <PetalWaveTransition fill="fill-cream" bg="bg-cocoa" />
       <TestimonialsSection />
+      <BloomDivider variant="bloom" className="bg-cream" />
       <InstagramSection />
+      <BloomDivider variant="flourish" className="bg-blush/20" />
       <NewsletterSection />
     </main>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { SlidersHorizontal, X, ChevronDown } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
+import ScrollReveal from '../components/ScrollReveal';
 import { PRODUCTS } from '../data/products';
 
 const CATEGORIES = ['All', 'tulips', 'sunflowers', 'roses', 'lilies', 'mixed'];
@@ -43,8 +44,10 @@ export default function ShopPage() {
   return (
     <main className="pt-20 min-h-screen bg-cream">
       {/* Header */}
-      <div className="bg-blush/30 py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="bg-blush/30 py-14 overflow-hidden relative">
+        <div className="absolute -top-12 -left-12 w-48 h-48 rounded-full bg-blush/40 blur-2xl pointer-events-none animate-pulse-subtle" />
+        <div className="absolute -bottom-12 -right-12 w-56 h-56 rounded-full bg-dusty/10 blur-2xl pointer-events-none animate-float-slow" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 animate-fade-in-up">
           <p className="section-subheading mb-3">Handcrafted With Love</p>
           <h1 className="section-heading">Shop All Blooms</h1>
           <p className="font-sans text-sm text-cocoa/60 mt-4 max-w-md mx-auto">
@@ -62,10 +65,10 @@ export default function ShopPage() {
               <button
                 key={cat}
                 onClick={() => setCategory(cat)}
-                className={`px-4 py-1.5 rounded-full font-sans text-xs tracking-wider uppercase transition-all duration-200 ${
+                className={`px-4 py-1.5 rounded-full font-sans text-xs tracking-wider uppercase transition-all duration-300 ease-out hover:-translate-y-0.5 ${
                   category === cat
-                    ? 'bg-cocoa text-cream'
-                    : 'bg-white border border-blush text-cocoa hover:border-dusty hover:text-dusty'
+                    ? 'bg-cocoa text-cream shadow-sm'
+                    : 'bg-white border border-blush text-cocoa hover:border-dusty hover:text-dusty shadow-xs hover:shadow-sm'
                 }`}
               >
                 {cat === 'All' ? 'All Flowers' : cat.charAt(0).toUpperCase() + cat.slice(1)}
@@ -102,7 +105,7 @@ export default function ShopPage() {
 
         {/* Filter panel */}
         {showFilters && (
-          <div className="bg-white border border-blush rounded-2xl p-6 mb-8 flex flex-col sm:flex-row gap-6">
+          <div className="bg-white border border-blush rounded-2xl p-6 mb-8 flex flex-col sm:flex-row gap-6 animate-fade-in shadow-xs">
             {/* Price */}
             <div>
               <p className="font-sans text-xs tracking-widest uppercase text-dusty mb-3">Price Range</p>
@@ -111,9 +114,9 @@ export default function ShopPage() {
                   <button
                     key={r.label}
                     onClick={() => setPriceRange(r)}
-                    className={`px-3 py-1 rounded-full font-sans text-xs transition-all ${
+                    className={`px-3 py-1 rounded-full font-sans text-xs transition-all duration-300 ${
                       priceRange.label === r.label
-                        ? 'bg-dusty text-white'
+                        ? 'bg-dusty text-white shadow-xs'
                         : 'bg-blush/30 text-cocoa hover:bg-blush'
                     }`}
                   >
@@ -155,13 +158,15 @@ export default function ShopPage() {
         {/* Grid */}
         {filtered.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filtered.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {filtered.map((product, idx) => (
+              <ScrollReveal key={product.id} delay={(idx % 4) * 70}>
+                <ProductCard product={product} />
+              </ScrollReveal>
             ))}
           </div>
         ) : (
-          <div className="text-center py-20">
-            <div className="text-5xl mb-4">🌸</div>
+          <div className="text-center py-20 animate-fade-in">
+            <div className="text-5xl mb-4 animate-float">🌸</div>
             <h3 className="font-serif text-2xl text-cocoa mb-2">No flowers found</h3>
             <p className="font-sans text-sm text-cocoa/60">Try adjusting your filters</p>
           </div>

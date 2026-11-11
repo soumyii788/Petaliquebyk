@@ -4,6 +4,8 @@ import { ShoppingBag, Heart, ChevronLeft, ChevronRight, Truck, Clock, Sparkles, 
 import { useCart } from '../context/CartContext';
 import { PRODUCTS, WHATSAPP_NUMBER } from '../data/products';
 import BloomDivider from '../components/BloomDivider';
+import ProductCard from '../components/ProductCard';
+import ScrollReveal from '../components/ScrollReveal';
 
 export default function ProductDetailPage() {
   const { slug } = useParams();
@@ -167,11 +169,12 @@ export default function ProductDetailPage() {
           {/* Image gallery */}
           <div className="space-y-4">
             {/* Main image */}
-            <div className="relative overflow-hidden rounded-2xl aspect-[4/5] bg-blush/20">
+            <div className="relative overflow-hidden rounded-2xl aspect-[4/5] bg-blush/20 shadow-[0_8px_30px_-6px_rgba(88,68,61,0.08)]">
               <img
+                key={currentImg}
                 src={product.images[currentImg]}
                 alt={product.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover animate-fade-in transition-transform duration-700 hover:scale-105"
               />
               {product.bestseller && (
                 <div className="absolute top-4 left-4 bg-dusty text-white text-xs font-sans tracking-wider uppercase px-3 py-1 rounded-full">
@@ -402,14 +405,18 @@ export default function ProductDetailPage() {
         {related.length > 0 && (
           <>
             <BloomDivider variant="bloom" spacing="my-16" />
-            <div>
-              <h2 className="font-serif text-3xl text-cocoa mb-8">You May Also Love</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {related.map((p) => (
-                  <ProductCard key={p.id} product={p} />
-                ))}
+            <ScrollReveal direction="up">
+              <div>
+                <h2 className="font-serif text-3xl text-cocoa mb-8">You May Also Love</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  {related.map((p, i) => (
+                    <ScrollReveal key={p.id} delay={i * 100}>
+                      <ProductCard product={p} />
+                    </ScrollReveal>
+                  ))}
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           </>
         )}
       </div>

@@ -17,6 +17,9 @@ export default {
         serif: ['Cormorant Garamond', 'Playfair Display', 'Georgia', 'serif'],
         sans: ['Poppins', 'DM Sans', 'system-ui', 'sans-serif'],
       },
+      transitionDuration: {
+        '400': '400ms',
+      },
       animation: {
         'fade-in': 'fadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'fade-in-up': 'fadeInUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards',

@@ -268,6 +268,9 @@ export const PRODUCTS = [
     price: 1150,
     originalPrice: 2899,
     images: [
+      '/photos/blue-bouquet-hero.jpg',
+      '/photos/blue-bouquet-card.jpg',
+      '/photos/blue-bouquet-detail.jpg',
       '/photos/evil-eye-nazar-blue-bouquet.jpg',
       '/photos/blue-teal-lily-maroon-wrap.jpg',
       '/photos/blue-lilies-tulips.png',

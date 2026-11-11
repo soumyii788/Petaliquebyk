@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Instagram, Sparkles, Heart, Package, Star } from 'lucide-react';
+import { ArrowRight, Instagram, Sparkles, Heart, Package, Star, ShoppingBag } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import {
   BirthdayLogo,
@@ -23,83 +23,10 @@ import {
 } from '../data/products';
 import BloomDivider, { PetalWaveTransition } from '../components/BloomDivider';
 import ScrollReveal from '../components/ScrollReveal';
-import BlueBouquet3D from '../components/BlueBouquet3D';
+import BouquetHero from '../components/BouquetHero';
 
-// ---------- Section: Hero ----------
-function HeroSection() {
-  return (
-    <section className="relative min-h-[92vh] lg:min-h-screen flex items-center overflow-hidden bg-[#FCF8F3]">
-      {/* Interactive 3D Blue Flower Bouquet & Falling Petals Canvas */}
-      <div className="absolute inset-0 z-10">
-        <BlueBouquet3D className="w-full h-full" />
-      </div>
-
-      {/* Decorative ambient elements */}
-      <div className="absolute top-20 right-10 w-80 h-80 bg-blush/25 rounded-full blur-3xl animate-pulse-subtle pointer-events-none" />
-      <div className="absolute bottom-20 left-10 w-72 h-72 bg-dusty/10 rounded-full blur-3xl animate-float-slow pointer-events-none" />
-
-      {/* Content */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 pointer-events-none w-full">
-        <div className="max-w-xl pointer-events-auto backdrop-blur-[3px] bg-cream/40 lg:bg-transparent p-6 sm:p-8 lg:p-0 rounded-3xl border border-blush/40 lg:border-none shadow-sm lg:shadow-none">
-          {/* Eyebrow */}
-          <div className="flex items-center gap-2 mb-6 animate-fade-in-down">
-            <div className="w-8 h-px bg-dusty" />
-            <span className="font-sans text-xs tracking-widest uppercase text-dusty font-medium flex items-center gap-1.5">
-              <Sparkles size={12} className="text-dusty animate-pulse-subtle" />
-              Handcrafted Floral Gifting · Jaipur
-            </span>
-          </div>
-
-          {/* Headline */}
-          <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-cocoa leading-[1.05] mb-6 animate-fade-in-up [animation-delay:150ms]">
-            Not Just Flowers.{' '}
-            <span className="italic text-dusty">Little Pieces</span> of Forever.
-          </h1>
-
-          {/* Subtext */}
-          <p className="font-sans text-base text-cocoa/75 leading-relaxed mb-8 max-w-md animate-fade-in-up [animation-delay:300ms]">
-            Handcrafted chenille blooms, made with love and wrapped in memories. Touch, explore, and rotate our signature handmade bouquets in real-time 3D.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up [animation-delay:450ms]">
-            <Link to="/shop" className="btn-primary text-center">
-              Explore the Blooms
-            </Link>
-            <Link to="/product/evil-eye-protection-bouquet" className="btn-outline text-center flex items-center justify-center gap-2">
-              <Sparkles size={14} className="text-dusty" />
-              Signature Blue Bouquet
-            </Link>
-          </div>
-
-          {/* Trust signals */}
-          <div className="flex items-center gap-6 mt-10 animate-fade-in-up [animation-delay:600ms]">
-            <div className="text-center group cursor-default">
-              <div className="font-serif text-2xl text-cocoa group-hover:text-dusty transition-colors duration-300">Forever</div>
-              <div className="font-sans text-[10px] tracking-wider uppercase text-dusty">Blooms</div>
-            </div>
-            <div className="w-px h-8 bg-blush" />
-            <div className="text-center group cursor-default">
-              <div className="font-serif text-2xl text-cocoa group-hover:text-dusty transition-colors duration-300">100%</div>
-              <div className="font-sans text-[10px] tracking-wider uppercase text-dusty">Handcrafted</div>
-            </div>
-            <div className="w-px h-8 bg-blush" />
-            <div className="text-center group cursor-default">
-              <div className="font-serif text-2xl text-cocoa group-hover:text-dusty transition-colors duration-300">Made to</div>
-              <div className="font-sans text-[10px] tracking-wider uppercase text-dusty">Order</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce pointer-events-none z-20">
-        <div className="w-px h-8 bg-dusty/50" />
-        <span className="font-sans text-[10px] tracking-widest uppercase text-dusty/70">Scroll to Explore</span>
-      </div>
-    </section>
-  );
-}
+// ---------- Section: Hero (Photo-based with animations) ----------
+// Hero is now BouquetHero — rendered inline in the main export below.
 
 // ---------- Section: Bestsellers ----------
 function BestsellersSection() {
@@ -480,14 +407,236 @@ function NewsletterSection() {
   );
 }
 
+// ---------- Section: Signature Blue Bouquet Featured ----------
+function SignaturePieceSection() {
+  const blueBouquet = PRODUCTS.find((p) => p.id === 9) || PRODUCTS[0];
+  const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi! I'm interested in the ${encodeURIComponent(blueBouquet.name)}. Can you share details and availability?`;
+
+  return (
+    <section
+      className="py-24 lg:py-32 relative overflow-hidden"
+      style={{ background: 'linear-gradient(135deg, #EEF4FF 0%, #dbeafe 50%, #FDF8F3 100%)' }}
+    >
+      {/* Soft decorative circles */}
+      <div
+        aria-hidden="true"
+        className="absolute pointer-events-none"
+        style={{
+          top: '-10%', right: '-5%',
+          width: 480, height: 480,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(103,181,232,0.18) 0%, transparent 70%)',
+          filter: 'blur(24px)',
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute pointer-events-none"
+        style={{
+          bottom: '-8%', left: '-4%',
+          width: 360, height: 360,
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(20,59,181,0.08) 0%, transparent 70%)',
+          filter: 'blur(20px)',
+        }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section label */}
+        <ScrollReveal direction="up" distance={16}>
+          <div className="text-center mb-14">
+            <p className="font-sans text-xs tracking-widest uppercase font-medium mb-3" style={{ color: '#143bb5' }}>
+              ✦ &nbsp;Our Signature Creation
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl text-cocoa leading-tight">
+              The Blue Chenille <span className="italic" style={{ color: '#143bb5' }}>Bouquet</span>
+            </h2>
+            <p className="font-sans text-sm text-cocoa/60 mt-4 max-w-md mx-auto">
+              Royal-blue and baby-blue handmade chenille blooms — a unique keepsake that never wilts.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left: Image with zoom and decoration */}
+          <ScrollReveal direction="right" distance={32}>
+            <div className="relative group">
+              {/* Organic blob shape behind image */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 rounded-3xl"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(103,181,232,0.2) 0%, rgba(20,59,181,0.1) 100%)',
+                  transform: 'rotate(-3deg) scale(1.03)',
+                  borderRadius: '30% 70% 65% 35% / 40% 45% 55% 60%',
+                }}
+              />
+
+              {/* Main image with zoom on hover */}
+              <div
+                className="relative overflow-hidden shimmer-on-hover"
+                style={{
+                  borderRadius: '30% 70% 65% 35% / 40% 45% 55% 60%',
+                  boxShadow: '0 32px 80px -12px rgba(20,59,181,0.22), 0 16px 40px -8px rgba(103,181,232,0.18)',
+                }}
+              >
+                <img
+                  src="/photos/blue-bouquet-card.jpg"
+                  alt="Royal blue handmade chenille bouquet — Petalique signature piece"
+                  className="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  style={{ display: 'block', aspectRatio: '4/5' }}
+                  loading="lazy"
+                />
+                {/* Blue tint overlay on hover */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: 'linear-gradient(to top, rgba(20,59,181,0.15) 0%, transparent 60%)' }}
+                />
+              </div>
+
+              {/* Floating badge */}
+              <div
+                className="absolute font-sans"
+                style={{
+                  top: '8%',
+                  right: '-16px',
+                  background: 'white',
+                  color: '#143bb5',
+                  borderRadius: 32,
+                  padding: '10px 18px',
+                  fontSize: 12,
+                  fontWeight: 700,
+                  letterSpacing: '0.06em',
+                  boxShadow: '0 8px 28px rgba(20,59,181,0.18)',
+                  border: '1.5px solid rgba(103,181,232,0.4)',
+                  animation: 'petalFloat 5s ease-in-out infinite alternate',
+                }}
+              >
+                ✦ Handmade
+              </div>
+              <div
+                className="absolute font-sans"
+                style={{
+                  bottom: '12%',
+                  left: '-18px',
+                  background: '#143bb5',
+                  color: 'white',
+                  borderRadius: 32,
+                  padding: '10px 18px',
+                  fontSize: 12,
+                  fontWeight: 700,
+                  letterSpacing: '0.06em',
+                  boxShadow: '0 8px 28px rgba(20,59,181,0.3)',
+                  animation: 'petalFloat 6s 1s ease-in-out infinite alternate',
+                }}
+              >
+                💙 Never Wilts
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Right: Product details */}
+          <ScrollReveal direction="left" distance={32} delay={150}>
+            <div>
+              {/* Product name & rating */}
+              <p className="font-sans text-xs tracking-widest uppercase font-medium mb-3" style={{ color: '#143bb5' }}>
+                Evil Eye Protection Bouquet
+              </p>
+              <h3 className="font-serif text-3xl md:text-4xl text-cocoa leading-tight mb-4">
+                Royal Blue Chenille<br />
+                <span className="italic" style={{ color: '#143bb5' }}>Handcrafted Bouquet</span>
+              </h3>
+
+              {/* Stars */}
+              <div className="flex items-center gap-1.5 mb-5">
+                {[1,2,3,4,5].map((s) => (
+                  <Star key={s} size={14} className="fill-amber-400 text-amber-400" />
+                ))}
+                <span className="font-sans text-xs text-cocoa/50 ml-2">Premium Handcrafted</span>
+              </div>
+
+              {/* Description */}
+              <p className="font-sans text-sm text-cocoa/70 leading-relaxed mb-6">
+                Each bloom is individually shaped from premium chenille fabric — soft, vibrant, and beautifully detailed. This bouquet features royal blue and baby-blue flowers with delicate white accents and hand-tied satin ribbon. A lasting keepsake for every occasion.
+              </p>
+
+              {/* Feature chips */}
+              <div className="flex flex-wrap gap-2 mb-7">
+                {['Royal Blue Chenille', 'Baby Blue Accents', 'Handmade Petals', 'Satin Ribbon', 'Gift-Ready', 'Never Wilts'].map((tag) => (
+                  <span
+                    key={tag}
+                    className="font-sans text-[11px] px-3 py-1.5 rounded-full"
+                    style={{ background: 'rgba(20,59,181,0.07)', color: '#143bb5', border: '1px solid rgba(103,181,232,0.3)' }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Pricing */}
+              <div className="flex items-end gap-4 mb-7">
+                <div>
+                  <p className="font-sans text-[10px] tracking-widest uppercase text-cocoa/40 mb-1">Bouquet Price</p>
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-serif text-3xl font-bold" style={{ color: '#143bb5' }}>₹{blueBouquet.price?.toLocaleString('en-IN') || '1,150'}</span>
+                    {blueBouquet.originalPrice && (
+                      <span className="font-sans text-base text-cocoa/35 line-through">₹{blueBouquet.originalPrice.toLocaleString('en-IN')}</span>
+                    )}
+                  </div>
+                  <p className="font-sans text-[10px] text-cocoa/40 mt-0.5">₹150 per bloom · Minimum 7 blooms</p>
+                </div>
+                <div className="w-px h-12 bg-blue-100" />
+                <div>
+                  <p className="font-sans text-[10px] tracking-widest uppercase text-cocoa/40 mb-1">Single Bloom</p>
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-serif text-2xl font-bold" style={{ color: '#67b5e8' }}>₹199</span>
+                  </div>
+                  <p className="font-sans text-[10px] text-cocoa/40 mt-0.5">Individual flower</p>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  to="/product/evil-eye-protection-bouquet"
+                  className="btn-primary flex items-center justify-center gap-2 text-center"
+                  style={{ background: '#143bb5', borderColor: '#143bb5' }}
+                >
+                  <ShoppingBag size={15} />
+                  View Full Details
+                </Link>
+                <a
+                  href={waLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline flex items-center justify-center gap-2 text-center"
+                  style={{ borderColor: '#143bb5', color: '#143bb5' }}
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.561 4.14 1.535 5.874L.057 23.943l6.258-1.642A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.86 0-3.6-.5-5.1-1.37L3 21.5l.9-3.8A9.95 9.95 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+                  </svg>
+                  Order via WhatsApp
+                </a>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ---------- Main Home Page ----------
 export default function HomePage() {
   return (
     <main>
-      <HeroSection />
+      <BouquetHero />
       <BloomDivider variant="flourish" className="bg-cream" />
       <BestsellersSection />
       <BloomDivider variant="bloom" className="bg-cream" />
+      <SignaturePieceSection />
+      <BloomDivider variant="flourish" className="bg-blush/30" />
       <CollectionsSection />
       <BloomDivider variant="flourish" className="bg-blush/30" />
       <MadeWithLoveSection />

@@ -23,28 +23,24 @@ import {
 } from '../data/products';
 import BloomDivider, { PetalWaveTransition } from '../components/BloomDivider';
 import ScrollReveal from '../components/ScrollReveal';
+import BlueBouquet3D from '../components/BlueBouquet3D';
 
 // ---------- Section: Hero ----------
 function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background image with subtle ambient Ken Burns effect */}
-      <div className="absolute inset-0 overflow-hidden">
-        <img
-          src={HERO_IMAGE}
-          alt="Beautiful handcrafted bouquet by Petalique"
-          className="w-full h-full object-cover animate-ken-burns will-change-transform"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-cream/95 via-cream/80 to-cream/25" />
+    <section className="relative min-h-[92vh] lg:min-h-screen flex items-center overflow-hidden bg-[#FCF8F3]">
+      {/* Interactive 3D Blue Flower Bouquet & Falling Petals Canvas */}
+      <div className="absolute inset-0 z-10">
+        <BlueBouquet3D className="w-full h-full" />
       </div>
 
       {/* Decorative ambient elements */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-blush/30 rounded-full blur-3xl animate-pulse-subtle pointer-events-none" />
-      <div className="absolute bottom-20 left-10 w-56 h-56 bg-sage/20 rounded-full blur-3xl animate-float-slow pointer-events-none" />
+      <div className="absolute top-20 right-10 w-80 h-80 bg-blush/25 rounded-full blur-3xl animate-pulse-subtle pointer-events-none" />
+      <div className="absolute bottom-20 left-10 w-72 h-72 bg-dusty/10 rounded-full blur-3xl animate-float-slow pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-        <div className="max-w-xl">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 pointer-events-none w-full">
+        <div className="max-w-xl pointer-events-auto backdrop-blur-[3px] bg-cream/40 lg:bg-transparent p-6 sm:p-8 lg:p-0 rounded-3xl border border-blush/40 lg:border-none shadow-sm lg:shadow-none">
           {/* Eyebrow */}
           <div className="flex items-center gap-2 mb-6 animate-fade-in-down">
             <div className="w-8 h-px bg-dusty" />
@@ -61,8 +57,8 @@ function HeroSection() {
           </h1>
 
           {/* Subtext */}
-          <p className="font-sans text-base text-cocoa/70 leading-relaxed mb-8 max-w-md animate-fade-in-up [animation-delay:300ms]">
-            Handcrafted blooms, made with love and wrapped in memories. Find a bouquet that says everything words cannot.
+          <p className="font-sans text-base text-cocoa/75 leading-relaxed mb-8 max-w-md animate-fade-in-up [animation-delay:300ms]">
+            Handcrafted chenille blooms, made with love and wrapped in memories. Touch, explore, and rotate our signature handmade bouquets in real-time 3D.
           </p>
 
           {/* CTA Buttons */}
@@ -70,8 +66,9 @@ function HeroSection() {
             <Link to="/shop" className="btn-primary text-center">
               Explore the Blooms
             </Link>
-            <Link to="/custom-bouquet" className="btn-outline text-center">
-              Create Your Bouquet
+            <Link to="/product/evil-eye-protection-bouquet" className="btn-outline text-center flex items-center justify-center gap-2">
+              <Sparkles size={14} className="text-dusty" />
+              Signature Blue Bouquet
             </Link>
           </div>
 
@@ -96,9 +93,9 @@ function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce pointer-events-none z-20">
         <div className="w-px h-8 bg-dusty/50" />
-        <span className="font-sans text-[10px] tracking-widest uppercase text-dusty/70">Scroll</span>
+        <span className="font-sans text-[10px] tracking-widest uppercase text-dusty/70">Scroll to Explore</span>
       </div>
     </section>
   );

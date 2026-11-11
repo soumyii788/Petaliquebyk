@@ -6,6 +6,7 @@ import { PRODUCTS, WHATSAPP_NUMBER } from '../data/products';
 import BloomDivider from '../components/BloomDivider';
 import ProductCard from '../components/ProductCard';
 import ScrollReveal from '../components/ScrollReveal';
+import BlueBouquet3D from '../components/BlueBouquet3D';
 
 export default function ProductDetailPage() {
   const { slug } = useParams();
@@ -15,6 +16,7 @@ export default function ProductDetailPage() {
   const product = PRODUCTS.find((p) => p.slug === slug);
 
   const [currentImg, setCurrentImg] = useState(0);
+  const [viewMode, setViewMode] = useState('photo'); // 'photo' | '3d'
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);
@@ -168,26 +170,56 @@ export default function ProductDetailPage() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Image gallery */}
           <div className="space-y-4">
-            {/* Main image */}
+            {/* Main image / 3D Viewer */}
             <div className="relative overflow-hidden rounded-2xl aspect-[4/5] bg-blush/20 shadow-[0_8px_30px_-6px_rgba(88,68,61,0.08)]">
-              <img
-                key={currentImg}
-                src={product.images[currentImg]}
-                alt={product.name}
-                className="w-full h-full object-cover animate-fade-in transition-transform duration-700 hover:scale-105"
-              />
+              {product.id === 9 && viewMode === '3d' ? (
+                <div className="w-full h-full relative bg-gradient-to-b from-[#FCF8F3] to-blush/25">
+                  <BlueBouquet3D className="w-full h-full" />
+                </div>
+              ) : (
+                <img
+                  key={currentImg}
+                  src={product.images[currentImg]}
+                  alt={product.name}
+                  className="w-full h-full object-cover animate-fade-in transition-transform duration-700 hover:scale-105"
+                />
+              )}
+
+              {/* 3D Mode Toggle for Signature Blue Bouquet */}
+              {product.id === 9 && (
+                <div className="absolute top-4 right-4 z-30 flex items-center bg-white/90 backdrop-blur-md rounded-full p-1 shadow-sm border border-blush">
+                  <button
+                    onClick={() => setViewMode('photo')}
+                    className={`px-3 py-1 rounded-full text-[10px] font-sans tracking-wider uppercase transition-all ${
+                      viewMode === 'photo' ? 'bg-cocoa text-cream shadow-xs' : 'text-cocoa/70 hover:text-dusty'
+                    }`}
+                  >
+                    Photos
+                  </button>
+                  <button
+                    onClick={() => setViewMode('3d')}
+                    className={`px-3 py-1 rounded-full text-[10px] font-sans tracking-wider uppercase flex items-center gap-1.5 transition-all ${
+                      viewMode === '3d' ? 'bg-dusty text-white shadow-xs' : 'text-cocoa/70 hover:text-dusty'
+                    }`}
+                  >
+                    <Sparkles size={11} className={viewMode === '3d' ? 'animate-pulse' : ''} />
+                    3D View
+                  </button>
+                </div>
+              )}
+
               {product.bestseller && (
                 <div className="absolute top-4 left-4 bg-dusty text-white text-xs font-sans tracking-wider uppercase px-3 py-1 rounded-full">
                   Bestseller
                 </div>
               )}
-              {currentDiscount && (
+              {currentDiscount && viewMode !== '3d' && (
                 <div className="absolute top-4 right-4 bg-cocoa text-cream text-xs font-sans px-3 py-1 rounded-full">
                   {currentDiscount}% off
                 </div>
               )}
               {/* Nav arrows */}
-              {product.images.length > 1 && (
+              {product.images.length > 1 && viewMode !== '3d' && (
                 <>
                   <button
                     onClick={() => setCurrentImg((prev) => (prev - 1 + product.images.length) % product.images.length)}
@@ -209,14 +241,29 @@ export default function ProductDetailPage() {
               {product.images.map((img, i) => (
                 <button
                   key={i}
-                  onClick={() => setCurrentImg(i)}
+                  onClick={() => {
+                    setViewMode('photo');
+                    setCurrentImg(i);
+                  }}
                   className={`w-20 h-20 rounded-xl overflow-hidden border-2 transition-all duration-200 ${
-                    currentImg === i ? 'border-dusty' : 'border-transparent hover:border-blush'
+                    viewMode === 'photo' && currentImg === i ? 'border-dusty' : 'border-transparent hover:border-blush'
                   }`}
                 >
                   <img src={img} alt={`View ${i + 1}`} className="w-full h-full object-cover" />
                 </button>
               ))}
+              {product.id === 9 && (
+                <button
+                  onClick={() => setViewMode('3d')}
+                  className={`w-20 h-20 rounded-xl overflow-hidden border-2 transition-all duration-200 flex flex-col items-center justify-center bg-blush/35 ${
+                    viewMode === '3d' ? 'border-dusty bg-white shadow-xs' : 'border-transparent hover:border-blush'
+                  }`}
+                  title="Interactive 3D View"
+                >
+                  <Sparkles size={18} className="text-dusty mb-1" />
+                  <span className="font-sans text-[10px] uppercase font-bold text-cocoa">3D Model</span>
+                </button>
+              )}
             </div>
           </div>
 

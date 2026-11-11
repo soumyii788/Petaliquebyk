@@ -18,31 +18,31 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-cocoa text-cream px-8 py-3 rounded-full font-sans font-medium text-sm tracking-widest uppercase transition-all duration-300 hover:bg-dusty hover:shadow-lg hover:scale-105 active:scale-95;
+    @apply bg-cocoa text-cream px-8 py-3.5 rounded-full font-sans font-medium text-xs sm:text-sm tracking-widest uppercase transition-all duration-400 ease-out hover:bg-dusty hover:shadow-[0_12px_28px_-6px_rgba(88,68,61,0.28)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98];
   }
 
   .btn-outline {
-    @apply border border-cocoa text-cocoa px-8 py-3 rounded-full font-sans font-medium text-sm tracking-widest uppercase transition-all duration-300 hover:bg-cocoa hover:text-cream hover:shadow-lg hover:scale-105 active:scale-95;
+    @apply border border-cocoa text-cocoa px-8 py-3.5 rounded-full font-sans font-medium text-xs sm:text-sm tracking-widest uppercase transition-all duration-400 ease-out hover:bg-cocoa hover:text-cream hover:shadow-[0_10px_25px_-6px_rgba(88,68,61,0.2)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98];
   }
 
   .btn-dusty {
-    @apply bg-dusty text-white px-8 py-3 rounded-full font-sans font-medium text-sm tracking-widest uppercase transition-all duration-300 hover:bg-cocoa hover:shadow-lg hover:scale-105 active:scale-95;
+    @apply bg-dusty text-white px-8 py-3.5 rounded-full font-sans font-medium text-xs sm:text-sm tracking-widest uppercase transition-all duration-400 ease-out hover:bg-cocoa hover:shadow-[0_12px_28px_-6px_rgba(199,141,156,0.38)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98];
   }
 
   .card-hover {
-    @apply transition-all duration-400 hover:-translate-y-2 hover:shadow-xl;
+    @apply transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_20px_40px_-12px_rgba(88,68,61,0.12)];
   }
 
   .section-heading {
-    @apply font-serif text-4xl md:text-5xl text-cocoa leading-tight;
+    @apply font-serif text-3xl sm:text-4xl md:text-5xl text-cocoa leading-[1.15] tracking-tight;
   }
 
   .section-subheading {
-    @apply font-sans text-dusty text-sm tracking-widest uppercase;
+    @apply font-sans text-dusty text-xs sm:text-sm tracking-[0.2em] uppercase font-medium;
   }
 
   .product-card {
-    @apply bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1;
+    @apply bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(88,68,61,0.06)] hover:shadow-[0_16px_36px_-8px_rgba(88,68,61,0.14)] transition-all duration-500 ease-out hover:-translate-y-1.5;
   }
 }
 

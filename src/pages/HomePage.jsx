@@ -22,49 +22,51 @@ import {
   WHATSAPP_NUMBER,
 } from '../data/products';
 import BloomDivider, { PetalWaveTransition } from '../components/BloomDivider';
+import ScrollReveal from '../components/ScrollReveal';
 
 // ---------- Section: Hero ----------
 function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0">
+      {/* Background image with subtle ambient Ken Burns effect */}
+      <div className="absolute inset-0 overflow-hidden">
         <img
           src={HERO_IMAGE}
           alt="Beautiful handcrafted bouquet by Petalique"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover animate-ken-burns will-change-transform"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-cream/95 via-cream/70 to-cream/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-cream/95 via-cream/80 to-cream/25" />
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute top-20 right-10 w-64 h-64 bg-blush/30 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-48 h-48 bg-sage/20 rounded-full blur-3xl" />
+      {/* Decorative ambient elements */}
+      <div className="absolute top-20 right-10 w-72 h-72 bg-blush/30 rounded-full blur-3xl animate-pulse-subtle pointer-events-none" />
+      <div className="absolute bottom-20 left-10 w-56 h-56 bg-sage/20 rounded-full blur-3xl animate-float-slow pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         <div className="max-w-xl">
           {/* Eyebrow */}
-          <div className="flex items-center gap-2 mb-6">
+          <div className="flex items-center gap-2 mb-6 animate-fade-in-down">
             <div className="w-8 h-px bg-dusty" />
-            <span className="font-sans text-xs tracking-widest uppercase text-dusty">
-              Handcrafted Floral Gifting
+            <span className="font-sans text-xs tracking-widest uppercase text-dusty font-medium flex items-center gap-1.5">
+              <Sparkles size={12} className="text-dusty animate-pulse-subtle" />
+              Handcrafted Floral Gifting · Jaipur
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-cocoa leading-[1.05] mb-6">
+          <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-cocoa leading-[1.05] mb-6 animate-fade-in-up [animation-delay:150ms]">
             Not Just Flowers.{' '}
             <span className="italic text-dusty">Little Pieces</span> of Forever.
           </h1>
 
           {/* Subtext */}
-          <p className="font-sans text-base text-cocoa/70 leading-relaxed mb-8 max-w-md">
+          <p className="font-sans text-base text-cocoa/70 leading-relaxed mb-8 max-w-md animate-fade-in-up [animation-delay:300ms]">
             Handcrafted blooms, made with love and wrapped in memories. Find a bouquet that says everything words cannot.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up [animation-delay:450ms]">
             <Link to="/shop" className="btn-primary text-center">
               Explore the Blooms
             </Link>
@@ -74,19 +76,19 @@ function HeroSection() {
           </div>
 
           {/* Trust signals */}
-          <div className="flex items-center gap-6 mt-10">
-            <div className="text-center">
-              <div className="font-serif text-2xl text-cocoa">Forever</div>
+          <div className="flex items-center gap-6 mt-10 animate-fade-in-up [animation-delay:600ms]">
+            <div className="text-center group cursor-default">
+              <div className="font-serif text-2xl text-cocoa group-hover:text-dusty transition-colors duration-300">Forever</div>
               <div className="font-sans text-[10px] tracking-wider uppercase text-dusty">Blooms</div>
             </div>
             <div className="w-px h-8 bg-blush" />
-            <div className="text-center">
-              <div className="font-serif text-2xl text-cocoa">100%</div>
+            <div className="text-center group cursor-default">
+              <div className="font-serif text-2xl text-cocoa group-hover:text-dusty transition-colors duration-300">100%</div>
               <div className="font-sans text-[10px] tracking-wider uppercase text-dusty">Handcrafted</div>
             </div>
             <div className="w-px h-8 bg-blush" />
-            <div className="text-center">
-              <div className="font-serif text-2xl text-cocoa">Made to</div>
+            <div className="text-center group cursor-default">
+              <div className="font-serif text-2xl text-cocoa group-hover:text-dusty transition-colors duration-300">Made to</div>
               <div className="font-sans text-[10px] tracking-wider uppercase text-dusty">Order</div>
             </div>
           </div>
@@ -108,23 +110,29 @@ function BestsellersSection() {
   return (
     <section className="py-20 lg:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="section-subheading mb-3">Most Loved</p>
-          <h2 className="section-heading">Our Bestsellers</h2>
-          <p className="font-sans text-sm text-cocoa/60 mt-4 max-w-md mx-auto">
-            These handcrafted bouquets have found their way to hundreds of happy hearts.
-          </p>
-        </div>
+        <ScrollReveal direction="up" distance={20}>
+          <div className="text-center mb-14">
+            <p className="section-subheading mb-3">Most Loved</p>
+            <h2 className="section-heading">Our Bestsellers</h2>
+            <p className="font-sans text-sm text-cocoa/60 mt-4 max-w-md mx-auto">
+              These handcrafted bouquets have found their way to hundreds of happy hearts.
+            </p>
+          </div>
+        </ScrollReveal>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {bestsellers.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {bestsellers.map((product, i) => (
+            <ScrollReveal key={product.id} delay={i * 100} distance={24}>
+              <ProductCard product={product} />
+            </ScrollReveal>
           ))}
         </div>
-        <div className="text-center mt-12">
-          <Link to="/shop" className="btn-outline">
-            View All Blooms
-          </Link>
-        </div>
+        <ScrollReveal direction="up" delay={200} distance={16}>
+          <div className="text-center mt-12">
+            <Link to="/shop" className="btn-outline">
+              View All Blooms
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -135,37 +143,41 @@ function CollectionsSection() {
   return (
     <section className="py-20 lg:py-28 bg-blush/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="section-subheading mb-3">Curated For You</p>
-          <h2 className="section-heading">Shop by Collection</h2>
-        </div>
+        <ScrollReveal direction="up" distance={20}>
+          <div className="text-center mb-14">
+            <p className="section-subheading mb-3">Curated For You</p>
+            <h2 className="section-heading">Shop by Collection</h2>
+          </div>
+        </ScrollReveal>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {COLLECTION_CATEGORIES.map((cat, i) => (
-            <Link
-              key={cat.id}
-              to={`/collections/${cat.slug}`}
-              className={`group relative overflow-hidden rounded-2xl ${i === 4 ? 'col-span-2 lg:col-span-1' : ''}`}
-            >
-              <div className="aspect-[4/5] relative">
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-cocoa/80 via-cocoa/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <h3 className="font-serif text-xl text-cream leading-tight">{cat.name}</h3>
-                  <p className="font-sans text-xs text-cream/70 mt-1 mb-3 hidden sm:block">{cat.description}</p>
-                  {cat.count && (
-                    <span className="font-sans text-xs text-cream/60">{cat.count} designs</span>
-                  )}
-                  <div className="mt-3 flex items-center gap-1 text-cream/80 group-hover:text-cream transition-colors">
-                    <span className="font-sans text-xs tracking-widest uppercase">Explore</span>
-                    <ArrowRight size={12} className="transform group-hover:translate-x-1 transition-transform" />
+            <ScrollReveal key={cat.id} delay={i * 80} distance={20} className={i === 4 ? 'col-span-2 lg:col-span-1' : ''}>
+              <Link
+                to={`/collections/${cat.slug}`}
+                className="group block relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1.5"
+              >
+                <div className="aspect-[4/5] relative">
+                  <img
+                    src={cat.image}
+                    alt={cat.name}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108 will-change-transform"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cocoa/85 via-cocoa/25 to-transparent transition-opacity duration-500 group-hover:opacity-95" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5 transform transition-transform duration-500 group-hover:-translate-y-1">
+                    <h3 className="font-serif text-xl text-cream leading-tight">{cat.name}</h3>
+                    <p className="font-sans text-xs text-cream/70 mt-1 mb-3 hidden sm:block">{cat.description}</p>
+                    {cat.count && (
+                      <span className="font-sans text-xs text-cream/60">{cat.count} designs</span>
+                    )}
+                    <div className="mt-3 flex items-center gap-1 text-cream/80 group-hover:text-cream transition-colors">
+                      <span className="font-sans text-xs tracking-widest uppercase font-medium">Explore</span>
+                      <ArrowRight size={12} className="transform group-hover:translate-x-1.5 transition-transform duration-300" />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </ScrollReveal>
           ))}
         </div>
       </div>
@@ -180,7 +192,7 @@ function MadeWithLoveSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: text */}
-          <div>
+          <ScrollReveal direction="right" distance={28}>
             <p className="section-subheading mb-4">Our Process</p>
             <h2 className="font-serif text-4xl md:text-5xl text-cocoa leading-tight mb-6">
               Every Bloom Is Born From{' '}
@@ -199,9 +211,9 @@ function MadeWithLoveSection() {
                 { icon: Heart, label: 'Handcrafted', desc: 'Every petal shaped by hand' },
                 { icon: Package, label: 'Gift-Ready', desc: 'Premium packaging included' },
               ].map(({ icon: Icon, label, desc }) => (
-                <div key={label} className="text-center">
-                  <div className="w-10 h-10 bg-blush rounded-full flex items-center justify-center mx-auto mb-3">
-                    <Icon size={18} className="text-dusty" />
+                <div key={label} className="text-center group">
+                  <div className="w-10 h-10 bg-blush rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-dusty group-hover:text-cream transition-colors duration-300">
+                    <Icon size={18} className="text-dusty group-hover:text-cream transition-colors duration-300" />
                   </div>
                   <p className="font-serif text-sm text-cocoa">{label}</p>
                   <p className="font-sans text-[10px] text-cocoa/50 mt-0.5">{desc}</p>
@@ -209,27 +221,32 @@ function MadeWithLoveSection() {
               ))}
             </div>
 
-            <Link to="/our-story" className="btn-primary">
+            <Link to="/our-story" className="btn-primary inline-block">
               Read Our Story
             </Link>
-          </div>
+          </ScrollReveal>
 
           {/* Right: Image grid */}
-          <div className="grid grid-cols-2 gap-4">
-            {PROCESS_IMAGES.slice(0, 3).map((img, i) => (
-              <div
-                key={i}
-                className={`overflow-hidden rounded-2xl ${i === 0 ? 'row-span-2' : ''}`}
-              >
-                <img
-                  src={img.src}
-                  alt={img.caption}
-                  className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
-                  style={{ minHeight: i === 0 ? '320px' : '150px' }}
-                />
-              </div>
-            ))}
-          </div>
+          <ScrollReveal direction="left" distance={28} delay={150}>
+            <div className="grid grid-cols-2 gap-4">
+              {PROCESS_IMAGES.slice(0, 3).map((img, i) => (
+                <div
+                  key={i}
+                  className={`overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-1 ${
+                    i === 0 ? 'row-span-2' : ''
+                  }`}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.caption}
+                    className="w-full h-full object-cover object-center hover:scale-106 transition-transform duration-700 ease-out will-change-transform"
+                    style={{ minHeight: i === 0 ? '320px' : '150px' }}
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
@@ -250,41 +267,44 @@ function PerfectGiftSection() {
   return (
     <section className="py-20 lg:py-28 bg-blush/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="section-subheading mb-3">Every Moment</p>
-          <h2 className="section-heading">The Perfect Gift For</h2>
-          <p className="font-sans text-sm text-cocoa/60 mt-4">
-            Petalique blooms are the answer to every gifting occasion.
-          </p>
-        </div>
+        <ScrollReveal direction="up" distance={20}>
+          <div className="text-center mb-14">
+            <p className="section-subheading mb-3">Every Moment</p>
+            <h2 className="section-heading">The Perfect Gift For</h2>
+            <p className="font-sans text-sm text-cocoa/60 mt-4">
+              Petalique blooms are the answer to every gifting occasion.
+            </p>
+          </div>
+        </ScrollReveal>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {OCCASION_CARDS.map(({ id, label, tagline }) => {
+          {OCCASION_CARDS.map(({ id, label, tagline }, i) => {
             const LogoComponent = occasionLogos[id] || JustBecauseLogo;
             return (
-              <Link
-                key={label}
-                to="/shop"
-                className="bg-white/80 hover:bg-white border border-blush/80 hover:border-dusty/60 rounded-2xl p-5 sm:p-6 text-center hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 group flex flex-col items-center justify-between min-h-[175px]"
-              >
-                <div className="w-13 h-13 rounded-full bg-cream border border-blush/80 flex items-center justify-center text-dusty group-hover:bg-dusty group-hover:text-cream group-hover:border-dusty group-hover:scale-105 transition-all duration-300 shadow-xs mb-3">
-                  <LogoComponent className="w-7 h-7" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-base text-cocoa group-hover:text-dusty transition-colors leading-snug">
-                    {label}
-                  </h3>
-                  {tagline && (
-                    <p className="font-sans text-[10px] tracking-wider text-cocoa/50 mt-1 uppercase">
-                      {tagline}
-                    </p>
-                  )}
-                </div>
-                <div className="mt-2 text-dusty opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="font-sans text-[10px] tracking-widest uppercase flex items-center gap-1 font-medium">
-                    Shop <ArrowRight size={10} />
-                  </span>
-                </div>
-              </Link>
+              <ScrollReveal key={label} delay={i * 60} distance={18}>
+                <Link
+                  to="/shop"
+                  className="bg-white/80 hover:bg-white border border-blush/80 hover:border-dusty/60 rounded-2xl p-5 sm:p-6 text-center shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-out group flex flex-col items-center justify-between min-h-[175px] h-full"
+                >
+                  <div className="w-13 h-13 rounded-full bg-cream border border-blush/80 flex items-center justify-center text-dusty group-hover:bg-dusty group-hover:text-cream group-hover:border-dusty group-hover:scale-110 transition-all duration-400 shadow-xs mb-3">
+                    <LogoComponent className="w-7 h-7" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-base text-cocoa group-hover:text-dusty transition-colors leading-snug">
+                      {label}
+                    </h3>
+                    {tagline && (
+                      <p className="font-sans text-[10px] tracking-wider text-cocoa/50 mt-1 uppercase">
+                        {tagline}
+                      </p>
+                    )}
+                  </div>
+                  <div className="mt-2 text-dusty opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="font-sans text-[10px] tracking-widest uppercase flex items-center gap-1 font-medium">
+                      Shop <ArrowRight size={10} className="transform group-hover:translate-x-0.5 transition-transform" />
+                    </span>
+                  </div>
+                </Link>
+              </ScrollReveal>
             );
           })}
         </div>
@@ -298,31 +318,33 @@ function CustomCTASection() {
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi! I'd like to create a custom bouquet with Petalique.`;
   return (
     <section className="py-20 lg:py-28 bg-cocoa relative overflow-hidden">
-      {/* Decorative */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-dusty/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-48 h-48 bg-sage/20 rounded-full blur-3xl" />
+      {/* Decorative ambient blobs */}
+      <div className="absolute top-0 right-0 w-72 h-72 bg-dusty/20 rounded-full blur-3xl animate-float-slow pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-56 h-56 bg-sage/20 rounded-full blur-3xl animate-pulse-subtle pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p className="font-sans text-xs tracking-widest uppercase text-dusty mb-4">Dream It. We'll Make It.</p>
-        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-cream leading-tight mb-6">
-          Can't Find Exactly What You're Looking For?
-        </h2>
-        <p className="font-sans text-sm text-cream/70 leading-relaxed mb-8 max-w-xl mx-auto">
-          Design your perfect bouquet — choose your flowers, colors, size, wrapping and add a personal message. We'll craft it just for you.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/custom-bouquet" className="btn-primary bg-cream text-cocoa hover:bg-blush">
-            Build Your Bouquet
-          </Link>
-          <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline border-cream text-cream hover:bg-cream hover:text-cocoa"
-          >
-            Chat on WhatsApp
-          </a>
-        </div>
+        <ScrollReveal direction="up" distance={24}>
+          <p className="font-sans text-xs tracking-widest uppercase text-dusty mb-4">Dream It. We'll Make It.</p>
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-cream leading-tight mb-6">
+            Can't Find Exactly What You're Looking For?
+          </h2>
+          <p className="font-sans text-sm text-cream/70 leading-relaxed mb-8 max-w-xl mx-auto">
+            Design your perfect bouquet — choose your flowers, colors, size, wrapping and add a personal message. We'll craft it just for you.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/custom-bouquet" className="btn-primary bg-cream text-cocoa hover:bg-blush">
+              Build Your Bouquet
+            </Link>
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline border-cream text-cream hover:bg-cream hover:text-cocoa"
+            >
+              Chat on WhatsApp
+            </a>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -333,38 +355,44 @@ function TestimonialsSection() {
   return (
     <section className="py-20 lg:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="section-subheading mb-3">Real Reviews</p>
-          <h2 className="section-heading">Customer Love</h2>
-        </div>
+        <ScrollReveal direction="up" distance={20}>
+          <div className="text-center mb-14">
+            <p className="section-subheading mb-3">Real Reviews</p>
+            <h2 className="section-heading">Customer Love</h2>
+          </div>
+        </ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {TESTIMONIALS.map((t) => (
-            <div key={t.id} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-              {/* Stars */}
-              <div className="flex gap-0.5 mb-4">
-                {Array.from({ length: t.rating }).map((_, i) => (
-                  <Star key={i} size={13} className="fill-dusty text-dusty" />
-                ))}
-              </div>
-              {/* Text */}
-              <p className="font-sans text-sm text-cocoa/80 leading-relaxed mb-4 italic">
-                "{t.text}"
-              </p>
-              {/* Product */}
-              <p className="font-sans text-[10px] tracking-wider uppercase text-dusty mb-4">
-                {t.product}
-              </p>
-              {/* Author */}
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-blush rounded-full flex items-center justify-center">
-                  <span className="font-serif text-xs text-dusty font-semibold">{t.avatar}</span>
-                </div>
+          {TESTIMONIALS.map((t, i) => (
+            <ScrollReveal key={t.id} delay={i * 90} distance={20}>
+              <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-1.5 h-full flex flex-col justify-between">
                 <div>
-                  <p className="font-sans text-xs font-semibold text-cocoa">{t.name}</p>
-                  <p className="font-sans text-[10px] text-cocoa/50">{t.location}</p>
+                  {/* Stars */}
+                  <div className="flex gap-0.5 mb-4">
+                    {Array.from({ length: t.rating }).map((_, idx) => (
+                      <Star key={idx} size={13} className="fill-dusty text-dusty" />
+                    ))}
+                  </div>
+                  {/* Text */}
+                  <p className="font-sans text-sm text-cocoa/80 leading-relaxed mb-4 italic">
+                    "{t.text}"
+                  </p>
+                  {/* Product */}
+                  <p className="font-sans text-[10px] tracking-wider uppercase text-dusty mb-4">
+                    {t.product}
+                  </p>
+                </div>
+                {/* Author */}
+                <div className="flex items-center gap-3 pt-2 border-t border-blush/40">
+                  <div className="w-8 h-8 bg-blush rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="font-serif text-xs text-dusty font-semibold">{t.avatar}</span>
+                  </div>
+                  <div>
+                    <p className="font-sans text-xs font-semibold text-cocoa">{t.name}</p>
+                    <p className="font-sans text-[10px] text-cocoa/50">{t.location}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
@@ -377,41 +405,44 @@ function InstagramSection() {
   return (
     <section className="py-20 lg:py-28 bg-blush/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <p className="section-subheading mb-3">Find Us On</p>
-          <h2 className="section-heading">@petalique.by.k</h2>
-          <p className="font-sans text-sm text-cocoa/60 mt-4">
-            Behind the scenes, new drops and happy customers ✨
-          </p>
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-5 btn-outline"
-          >
-            <Instagram size={15} />
-            Follow on Instagram
-          </a>
-        </div>
-        <div className="grid grid-cols-3 lg:grid-cols-6 gap-2 lg:gap-3">
-          {INSTAGRAM_POSTS.map((post) => (
+        <ScrollReveal direction="up" distance={20}>
+          <div className="text-center mb-10">
+            <p className="section-subheading mb-3">Find Us On</p>
+            <h2 className="section-heading">@petalique.by.k</h2>
+            <p className="font-sans text-sm text-cocoa/60 mt-4">
+              Behind the scenes, new drops and happy customers ✨
+            </p>
             <a
-              key={post.id}
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative aspect-square overflow-hidden rounded-xl group"
+              className="inline-flex items-center gap-2 mt-5 btn-outline"
             >
-              <img
-                src={post.image}
-                alt={post.alt}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-cocoa/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <Instagram size={20} className="text-white" />
-              </div>
+              <Instagram size={15} />
+              Follow on Instagram
             </a>
+          </div>
+        </ScrollReveal>
+        <div className="grid grid-cols-3 lg:grid-cols-6 gap-2 lg:gap-3">
+          {INSTAGRAM_POSTS.map((post, i) => (
+            <ScrollReveal key={post.id} delay={i * 50} distance={16}>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative aspect-square overflow-hidden rounded-xl group shadow-2xs hover:shadow-md transition-shadow"
+              >
+                <img
+                  src={post.image}
+                  alt={post.alt}
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 will-change-transform"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-cocoa/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[1px]">
+                  <Instagram size={20} className="text-white transform scale-90 group-hover:scale-100 transition-transform duration-300" />
+                </div>
+              </a>
+            </ScrollReveal>
           ))}
         </div>
       </div>
@@ -424,27 +455,29 @@ function NewsletterSection() {
   return (
     <section className="py-16 bg-blush">
       <div className="max-w-xl mx-auto px-4 text-center">
-        <h3 className="font-serif text-3xl text-cocoa mb-3">Stay in Bloom</h3>
-        <p className="font-sans text-sm text-cocoa/70 mb-6">
-          Be the first to know about new collections, seasonal drops and special offers.
-        </p>
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          className="flex flex-col sm:flex-row gap-3"
-        >
-          <input
-            type="email"
-            placeholder="Your email address"
-            className="flex-1 px-5 py-3 rounded-full border border-dusty/30 bg-white text-cocoa placeholder-cocoa/40 font-sans text-sm focus:outline-none focus:border-dusty transition-colors"
-            required
-          />
-          <button type="submit" className="btn-primary whitespace-nowrap">
-            Subscribe
-          </button>
-        </form>
-        <p className="font-sans text-[10px] text-cocoa/40 mt-3">
-          No spam. Unsubscribe anytime.
-        </p>
+        <ScrollReveal direction="up" distance={20}>
+          <h3 className="font-serif text-3xl text-cocoa mb-3">Stay in Bloom</h3>
+          <p className="font-sans text-sm text-cocoa/70 mb-6">
+            Be the first to know about new collections, seasonal drops and special offers.
+          </p>
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="flex flex-col sm:flex-row gap-3"
+          >
+            <input
+              type="email"
+              placeholder="Your email address"
+              className="flex-1 px-5 py-3 rounded-full border border-dusty/30 bg-white text-cocoa placeholder-cocoa/40 font-sans text-sm focus:outline-none focus:border-dusty transition-all duration-300 focus:shadow-[0_0_15px_-3px_rgba(199,141,156,0.3)]"
+              required
+            />
+            <button type="submit" className="btn-primary whitespace-nowrap">
+              Subscribe
+            </button>
+          </form>
+          <p className="font-sans text-[10px] text-cocoa/40 mt-3">
+            No spam. Unsubscribe anytime.
+          </p>
+        </ScrollReveal>
       </div>
     </section>
   );

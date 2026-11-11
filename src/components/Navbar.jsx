@@ -64,14 +64,21 @@ export default function Navbar() {
                   key={link.to}
                   to={link.to}
                   className={({ isActive }) =>
-                    `font-sans text-xs tracking-widest uppercase transition-all duration-300 pb-0.5 ${
-                      isActive
-                        ? 'text-dusty border-b border-dusty'
-                        : 'text-cocoa hover:text-dusty'
+                    `group relative font-sans text-xs tracking-widest uppercase transition-colors duration-300 py-1 ${
+                      isActive ? 'text-dusty font-medium' : 'text-cocoa/80 hover:text-dusty'
                     }`
                   }
                 >
-                  {link.label}
+                  {({ isActive }) => (
+                    <>
+                      <span>{link.label}</span>
+                      <span
+                        className={`absolute bottom-0 left-0 h-[2px] bg-dusty transition-all duration-300 ease-out rounded-full ${
+                          isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                        }`}
+                      />
+                    </>
+                  )}
                 </NavLink>
               ))}
             </div>
@@ -82,26 +89,26 @@ export default function Navbar() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:flex p-2 text-cocoa hover:text-dusty transition-colors duration-300"
+                className="hidden lg:flex p-2 text-cocoa hover:text-dusty transition-colors duration-300 hover:scale-105 active:scale-95"
                 aria-label="Instagram"
               >
                 <Instagram size={18} />
               </a>
               <Link
                 to="/cart"
-                className="relative p-2 text-cocoa hover:text-dusty transition-colors duration-300"
+                className="relative p-2 text-cocoa hover:text-dusty transition-colors duration-300 hover:scale-105 active:scale-95"
                 aria-label={`Cart (${totalItems} items)`}
               >
                 <ShoppingBag size={20} />
                 {totalItems > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-dusty text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-sans font-semibold">
+                  <span className="absolute -top-0.5 -right-0.5 bg-dusty text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-sans font-semibold shadow-xs animate-pulse-subtle">
                     {totalItems > 9 ? '9+' : totalItems}
                   </span>
                 )}
               </Link>
               <button
                 onClick={() => setIsOpen(true)}
-                className="lg:hidden p-2 text-cocoa hover:text-dusty transition-colors duration-300"
+                className="lg:hidden p-2 text-cocoa hover:text-dusty transition-colors duration-300 hover:scale-105 active:scale-95"
                 aria-label="Open menu"
               >
                 <Menu size={22} />
